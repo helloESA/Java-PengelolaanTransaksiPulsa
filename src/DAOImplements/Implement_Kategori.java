@@ -6,7 +6,9 @@
 package DAOImplements;
 
 import Config.DBUtilities;
+import DAO.DAO_Kategori;
 import DAO.DAO_User;
+import Model.Kategori;
 import Model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,32 +23,30 @@ import javax.swing.JOptionPane;
  *
  * @author MohamadEsa
  */
-public class Implement_User implements DAO_User{
+public class Implement_Kategori implements DAO_Kategori{
 
   Connection con;
   
-  public Implement_User(){}
+  public Implement_Kategori(){}
   
   @Override
-  public List<User> getALL() {
+  public List<Kategori> getALL() {
     con = DBUtilities.config();
     Statement sta = null;
     ResultSet res = null;
-    List<User> li = null;
+    List<Kategori> li = null;
     
     try {
-      String q = "SELECT * FROM `user` ORDER BY id_user DESC";
+      String q = "SELECT * FROM `kategori` ORDER BY id_kategori DESC";
       
       li = new ArrayList<>();
       sta = con.createStatement();
       res = sta.executeQuery(q);
       
       while(res.next()){
-        User m = new User();
-        m.setId(res.getString("id_user"));
-        m.setNama(res.getString("nama_user"));
-        m.setUsername(res.getString("username"));
-        m.setPassword(res.getString("password"));
+        Kategori m = new Kategori();
+        m.setId(res.getString("id_kategori"));
+        m.setKategori(res.getString("nama_kategori"));
         
         li.add(m);
       }
@@ -66,69 +66,23 @@ public class Implement_User implements DAO_User{
   }
 
   @Override
-  public List<User> getLogin(String username, String password) {
+  public List<Kategori> getSearch(String data) {
     con = DBUtilities.config();
     Statement sta = null;
     ResultSet res = null;
-    List<User> li = null;
-    String id = null, nama = null, uname = null, pass = null;
-    User m = null;
-    try {
-      String q = "SELECT * FROM `user` WHERE username='"+username+"' AND password = MD5('"+password+"')";
-      
-      li = new ArrayList<>();
-      sta = con.createStatement();
-      res = sta.executeQuery(q);
-      
-      while(res.next()){
-        m = new User();
-        id = res.getString("id_user");
-        nama = res.getString("nama_user");
-        uname = res.getString("username");
-        pass = res.getString("password");
-      }
-      res.last();
-      if(res.getRow()==1){
-        m.setId(id);
-        m.setNama(nama);
-        m.setUsername(uname);
-        m.setPassword(pass);
-      }
-      li.add(m);
-    } catch (SQLException e) {
-      JOptionPane.showMessageDialog(null, "[101]\nLogin Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
-      System.err.println("[101] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
-    }
-    return li;
-  }
-
-  @Override
-  public List<User> getSearch(String data) {
-    con = DBUtilities.config();
-    Statement sta = null;
-    ResultSet res = null;
-    List<User> li = null;
+    List<Kategori> li = null;
     
     try {
-      String q = "SELECT * FROM `user` WHERE nama_user LIKE '%"+data+"%'";
+      String q = "SELECT * FROM `kategori` WHERE nama_kategori LIKE '%"+data+"%'";
       
       li = new ArrayList<>();
       sta = con.createStatement();
       res = sta.executeQuery(q);
       
       while(res.next()){
-        User m = new User();
-        m.setId(res.getString("id_user"));
-        m.setNama(res.getString("nama_user"));
-        m.setUsername(res.getString("username"));
-        m.setPassword(res.getString("password"));
+        Kategori m = new Kategori();
+        m.setId(res.getString("id_kategori"));
+        m.setKategori(res.getString("nama_kategori"));
         
         li.add(m);
       }
@@ -148,26 +102,23 @@ public class Implement_User implements DAO_User{
   }
 
   @Override
-  public void add(User data) {
+  public void add(Kategori data) {
     con = DBUtilities.config();
     
-    String nama = data.getNama();
-    String uname = data.getUsername();
-    String pass = data.getPassword();
+    String nama = data.getKategori();
     
     PreparedStatement stat = null;
     
     try {
-      String q = "INSERT INTO `user`(`id_user`, `nama_user`, `username`, `password`) VALUES (null, ?, ?, MD5(?))";
+      String q = "INSERT INTO `kategori`(`id_kategori`, `nama_kategori`) VALUES (null, ?)";
       
       stat = con.prepareStatement(q);
       stat.setString(1, nama);
-      stat.setString(2, uname);
-      stat.setString(3, pass);
       stat.executeUpdate();
       
     } catch (SQLException e) {
-      JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[200] Pesan Error:\n"+e);
+      JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      
+      System.err.println("[200] Pesan Error:\n"+e);
     } finally{
       try {
         con.close();
@@ -178,28 +129,25 @@ public class Implement_User implements DAO_User{
   }
 
   @Override
-  public void edit(User data) {
+  public void edit(Kategori data) {
     con = DBUtilities.config();
     
     String id = data.getId();
-    String nama = data.getNama();
-    String uname = data.getUsername();
-    String pass = data.getPassword();
+    String nama = data.getKategori();
     
     PreparedStatement stat = null;
     
     try {
-      String q = "UPDATE `user` SET `nama_user`=?,`username`=?,`password`= MD5(?) WHERE `id_user`=?";
+      String q = "UPDATE `kategori` SET `nama_kategori`=? WHERE `id_kategori`=?";
       
       stat = con.prepareStatement(q);
       stat.setString(1, nama);
-      stat.setString(2, uname);
-      stat.setString(3, pass);
-      stat.setString(4, id);
+      stat.setString(2, id);
       stat.executeUpdate();
       
     } catch (SQLException e) {
-      JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[300] Pesan Error:\n"+e);
+      JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);
+      System.err.println("[300] Pesan Error:\n"+e);
     } finally{
       try {
         con.close();
@@ -215,11 +163,12 @@ public class Implement_User implements DAO_User{
     PreparedStatement stat = null;
     
     try {
-      String q = "DELETE FROM user WHERE id_user='"+data+"'";
+      String q = "DELETE FROM kategori WHERE id_kategori='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
     } catch (SQLException e) {
-      JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[400] Pesan Error:\n"+e);
+      JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      
+      System.err.println("[400] Pesan Error:\n"+e);
     }
   }
   

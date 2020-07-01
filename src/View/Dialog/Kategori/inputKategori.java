@@ -5,6 +5,11 @@
  */
 package View.Dialog.Kategori;
 
+import Controller.Kategori.Control_kategoriAdd;
+import View.Panel.kategoriPanel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author MohamadEsa
@@ -14,10 +19,21 @@ public class inputKategori extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public inputKategori() {
+  Control_kategoriAdd c;
+  kategoriPanel form;
+  
+  public inputKategori(kategoriPanel form) {
     initComponents();
+    c = new Control_kategoriAdd(this);
+    this.form=form;
+    jLabel1.setVisible(false);
   }
 
+  public JTextField getTxtKategori() {
+    return txtKategori;
+  }
+
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +47,7 @@ public class inputKategori extends javax.swing.JDialog {
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
-    jTextField1 = new javax.swing.JTextField();
+    txtKategori = new javax.swing.JTextField();
     jButton1 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -65,7 +81,7 @@ public class inputKategori extends javax.swing.JDialog {
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addComponent(jLabel2)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
@@ -76,7 +92,7 @@ public class inputKategori extends javax.swing.JDialog {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(24, 24, 24)
         .addComponent(jButton1)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -114,7 +130,13 @@ public class inputKategori extends javax.swing.JDialog {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+   if(txtKategori.getText().trim().isEmpty()){
+     JOptionPane.showMessageDialog(null, "Pastikan kolom 'kategori' terisi", "Perhatian", JOptionPane.WARNING_MESSAGE);
+   } else{
+     c.insert(this);
+     this.dispose();
+     form.refresh();
+   }
   }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -124,6 +146,6 @@ public class inputKategori extends javax.swing.JDialog {
   private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JTextField txtKategori;
   // End of variables declaration//GEN-END:variables
 }

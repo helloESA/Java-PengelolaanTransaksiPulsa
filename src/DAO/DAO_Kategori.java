@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Model.Kategori;
 import Model.User;
 import java.util.List;
 
@@ -12,13 +13,12 @@ import java.util.List;
  *
  * @author MohamadEsa
  */
-public interface DAO_User {
+public interface DAO_Kategori {
   
-  public List<User> getALL();
-  public List<User> getLogin(String username, String password);
-  public List<User> getSearch(String data);
+  public List<Kategori> getALL();
+  public List<Kategori> getSearch(String data);
   
-  public void add(User data);
-  public void edit(User data);
+  public void add(Kategori data);
+  public void edit(Kategori data);
   public void delete(String data);
 }

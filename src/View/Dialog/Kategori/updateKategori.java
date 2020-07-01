@@ -5,6 +5,11 @@
  */
 package View.Dialog.Kategori;
 
+import Controller.Kategori.Control_kategoriUpdate;
+import View.Panel.kategoriPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 /**
  *
  * @author MohamadEsa
@@ -14,10 +19,28 @@ public class updateKategori extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public updateKategori() {
+  public String id, kategori; 
+  Control_kategoriUpdate c;
+  kategoriPanel view;
+  
+  public updateKategori(kategoriPanel view) {
     initComponents();
+    c = new Control_kategoriUpdate(this);
+    this.kategori=kategori;
+    
   }
 
+  public JLabel getTxtID() {
+    return txtID;
+  }
+
+  public JTextField getTxtKategori() {
+    return txtKategori;
+  }
+
+  public void dipilih(){
+    
+  }
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,9 +52,9 @@ public class updateKategori extends javax.swing.JDialog {
 
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
-    jLabel1 = new javax.swing.JLabel();
+    txtID = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
-    jTextField1 = new javax.swing.JTextField();
+    txtKategori = new javax.swing.JTextField();
     jButton1 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -40,7 +63,7 @@ public class updateKategori extends javax.swing.JDialog {
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
 
-    jLabel1.setText("ID");
+    txtID.setText("ID");
 
     jLabel2.setText("Kategori");
 
@@ -60,23 +83,23 @@ public class updateKategori extends javax.swing.JDialog {
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
           .addGroup(jPanel2Layout.createSequentialGroup()
-            .addComponent(jLabel1)
+            .addComponent(txtID)
             .addGap(0, 0, Short.MAX_VALUE))
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addComponent(jLabel2)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jLabel1)
+        .addComponent(txtID)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(24, 24, 24)
         .addComponent(jButton1)
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -120,10 +143,10 @@ public class updateKategori extends javax.swing.JDialog {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
-  private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JLabel txtID;
+  private javax.swing.JTextField txtKategori;
   // End of variables declaration//GEN-END:variables
 }

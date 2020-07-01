@@ -303,7 +303,7 @@ public class Dashboard extends javax.swing.JFrame {
     btnLaporan1.setPreferredSize(new java.awt.Dimension(164, 15));
 
     labelLaporan1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-    labelLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/report.png"))); // NOI18N
+    labelLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/exit.png"))); // NOI18N
     labelLaporan1.setText("LOGOUT");
     labelLaporan1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     labelLaporan1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -594,19 +594,23 @@ public class Dashboard extends javax.swing.JFrame {
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void labelLaporan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseClicked
-    btnTransaksi.setBackground(new Color(178, 190, 200));
+    btnLaporan1.setBackground(new Color(178, 190, 200));
     int ok = JOptionPane.showConfirmDialog(null, "Yakin Ingin Keluar Akun?","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if (ok==0){
+          User.setId("");
+          User.setNama("");
+          User.setPassword("");
+          User.setUsername("");
             new Login().show();
         }
   }//GEN-LAST:event_labelLaporan1MouseClicked
 
   private void labelLaporan1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseEntered
-    btnLaporan.setBackground(new Color(204, 216, 226));
+    btnLaporan1.setBackground(new Color(204, 216, 226));
   }//GEN-LAST:event_labelLaporan1MouseEntered
 
   private void labelLaporan1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseExited
-    btnTransaksi.setBackground(new Color(229, 241, 251));
+    btnLaporan1.setBackground(new Color(229, 241, 251));
   }//GEN-LAST:event_labelLaporan1MouseExited
 
    

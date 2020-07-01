@@ -5,6 +5,12 @@
  */
 package View.Panel;
 
+import Controller.Kategori.Control_kategoriList;
+import View.Dialog.Kategori.inputKategori;
+import View.Dialog.Kategori.updateKategori;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author MohamadEsa
@@ -14,9 +20,29 @@ public class kategoriPanel extends javax.swing.JPanel {
   /**
    * Creates new form userPanel
    */
+  updateKategori ubah = null;
+  Control_kategoriList c;
+  
   public kategoriPanel() {
     initComponents();
+    c = new Control_kategoriList(this);
+    jLabel2.setVisible(false);
+    refresh();
   }
+  
+  public void refresh(){
+    c.isiTable();
+  }
+
+  public JTable getTabelDataKategori() {
+    return tabelDataKategori;
+  }
+
+  public JTextField getTxtCari() {
+    return txtCari;
+  }
+  
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -30,15 +56,16 @@ public class kategoriPanel extends javax.swing.JPanel {
     jPanel5 = new javax.swing.JPanel();
     jPanel3 = new javax.swing.JPanel();
     jPanel1 = new javax.swing.JPanel();
-    jButton1 = new javax.swing.JButton();
-    jButton2 = new javax.swing.JButton();
-    jButton3 = new javax.swing.JButton();
+    btnAdd = new javax.swing.JButton();
+    btnEdit = new javax.swing.JButton();
+    btnDelete = new javax.swing.JButton();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTable1 = new javax.swing.JTable();
-    jTextField1 = new javax.swing.JTextField();
+    tabelDataKategori = new javax.swing.JTable();
+    txtCari = new javax.swing.JTextField();
     jButton4 = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
+    jLabel2 = new javax.swing.JLabel();
 
     setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -50,22 +77,32 @@ public class kategoriPanel extends javax.swing.JPanel {
     jPanel1.setOpaque(false);
     jPanel1.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-    jButton1.setBackground(new java.awt.Color(0, 123, 255));
-    jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/add.png"))); // NOI18N
-    jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
-    jPanel1.add(jButton1);
+    btnAdd.setBackground(new java.awt.Color(0, 123, 255));
+    btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/add.png"))); // NOI18N
+    btnAdd.setPreferredSize(new java.awt.Dimension(75, 25));
+    btnAdd.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnAddActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnAdd);
 
-    jButton2.setBackground(new java.awt.Color(255, 193, 7));
-    jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/edit.png"))); // NOI18N
-    jButton2.setPreferredSize(new java.awt.Dimension(75, 25));
-    jPanel1.add(jButton2);
+    btnEdit.setBackground(new java.awt.Color(255, 193, 7));
+    btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/edit.png"))); // NOI18N
+    btnEdit.setPreferredSize(new java.awt.Dimension(75, 25));
+    btnEdit.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEditActionPerformed(evt);
+      }
+    });
+    jPanel1.add(btnEdit);
 
-    jButton3.setBackground(new java.awt.Color(220, 53, 69));
-    jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/delete.png"))); // NOI18N
-    jButton3.setPreferredSize(new java.awt.Dimension(75, 25));
-    jPanel1.add(jButton3);
+    btnDelete.setBackground(new java.awt.Color(220, 53, 69));
+    btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/delete.png"))); // NOI18N
+    btnDelete.setPreferredSize(new java.awt.Dimension(75, 25));
+    jPanel1.add(btnDelete);
 
-    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+    tabelDataKategori.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
         {null, null, null, null},
         {null, null, null, null},
@@ -76,13 +113,23 @@ public class kategoriPanel extends javax.swing.JPanel {
         "Title 1", "Title 2", "Title 3", "Title 4"
       }
     ));
-    jScrollPane1.setViewportView(jTable1);
+    tabelDataKategori.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tabelDataKategoriMouseClicked(evt);
+      }
+    });
+    jScrollPane1.setViewportView(tabelDataKategori);
 
-    jTextField1.setPreferredSize(new java.awt.Dimension(6, 25));
+    txtCari.setPreferredSize(new java.awt.Dimension(6, 25));
 
     jButton4.setBackground(new java.awt.Color(0, 0, 0));
     jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
     jButton4.setPreferredSize(new java.awt.Dimension(75, 25));
+    jButton4.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
@@ -95,7 +142,7 @@ public class kategoriPanel extends javax.swing.JPanel {
           .addGroup(jPanel3Layout.createSequentialGroup()
             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addContainerGap())
@@ -108,7 +155,7 @@ public class kategoriPanel extends javax.swing.JPanel {
           .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(txtCari, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
         .addContainerGap())
@@ -118,18 +165,24 @@ public class kategoriPanel extends javax.swing.JPanel {
 
     jLabel1.setText("KELOLA KATEGORI");
 
+    jLabel2.setText("jLabel2");
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap()
+        .addComponent(jLabel2)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(jLabel1)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+        .addComponent(jLabel2))
     );
 
     javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -156,19 +209,46 @@ public class kategoriPanel extends javax.swing.JPanel {
     add(jPanel5);
   }// </editor-fold>//GEN-END:initComponents
 
+  private void tabelDataKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataKategoriMouseClicked
+   int tableData = tabelDataKategori.getSelectedRow();
+    ubah = new updateKategori(this);
+    jLabel2.setText(tabelDataKategori.getValueAt(tableData, 0).toString());
+    
+    ubah.id = tabelDataKategori.getValueAt(tableData, 0).toString();
+    ubah.kategori = tabelDataKategori.getValueAt(tableData, 1).toString();
+    ubah.dipilih();
+    
+    btnAdd.setEnabled(false);
+    btnDelete.setEnabled(true);
+    btnEdit.setEnabled(true);
+  }//GEN-LAST:event_tabelDataKategoriMouseClicked
+
+  private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    ubah.setVisible(true);
+  }//GEN-LAST:event_btnEditActionPerformed
+
+  private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+    new inputKategori(this).setVisible(true);
+  }//GEN-LAST:event_btnAddActionPerformed
+
+  private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    c.search(this);
+  }//GEN-LAST:event_jButton4ActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButton2;
-  private javax.swing.JButton jButton3;
+  private javax.swing.JButton btnAdd;
+  private javax.swing.JButton btnDelete;
+  private javax.swing.JButton btnEdit;
   private javax.swing.JButton jButton4;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel5;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTable jTable1;
-  private javax.swing.JTextField jTextField1;
+  private javax.swing.JTable tabelDataKategori;
+  private javax.swing.JTextField txtCari;
   // End of variables declaration//GEN-END:variables
 }

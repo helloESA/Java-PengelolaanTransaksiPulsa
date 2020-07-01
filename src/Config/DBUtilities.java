@@ -8,6 +8,7 @@ package Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +28,7 @@ public class DBUtilities implements DBConfig{
             }
         } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | SQLException e) {
             System.err.println("Kode Akses Error : "+e);
+            JOptionPane.showMessageDialog(null, "Database Tidak Terhubung","Error",JOptionPane.ERROR_MESSAGE);
         }
         return con;
     }

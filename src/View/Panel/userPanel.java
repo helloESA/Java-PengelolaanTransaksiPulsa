@@ -132,6 +132,11 @@ public class userPanel extends javax.swing.JPanel {
     jButton4.setBackground(new java.awt.Color(0, 0, 0));
     jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/search.png"))); // NOI18N
     jButton4.setPreferredSize(new java.awt.Dimension(75, 25));
+    jButton4.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
     jPanel3.setLayout(jPanel3Layout);
@@ -254,6 +259,15 @@ public class userPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Pilih Data yang akan Dihapus","Peringatan",JOptionPane.WARNING_MESSAGE);
         }
   }//GEN-LAST:event_btnDeleteActionPerformed
+
+  private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    if(txtCari.getText().trim().isEmpty()){
+      JOptionPane.showMessageDialog(null, "Pencarian Belum Ditentukan","Perhatian",JOptionPane.WARNING_MESSAGE);
+    } else{
+      c.search(this);
+    }
+    
+  }//GEN-LAST:event_jButton4ActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
