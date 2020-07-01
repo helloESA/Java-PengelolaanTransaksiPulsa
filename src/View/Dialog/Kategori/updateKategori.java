@@ -6,6 +6,7 @@
 package View.Dialog.Kategori;
 
 import Controller.Kategori.Control_kategoriUpdate;
+import Controller.Produk.Control_produkUpdate;
 import View.Panel.kategoriPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,8 +27,8 @@ public class updateKategori extends javax.swing.JDialog {
   public updateKategori(kategoriPanel view) {
     initComponents();
     c = new Control_kategoriUpdate(this);
-    this.kategori=kategori;
-    
+    this.view=view;
+    txtID.setVisible(false);
   }
 
   public JLabel getTxtID() {
@@ -39,7 +40,9 @@ public class updateKategori extends javax.swing.JDialog {
   }
 
   public void dipilih(){
-    
+    view.ubah = this;
+    txtID.setText(id);
+    txtKategori.setText(kategori);
   }
   /**
    * This method is called from within the constructor to initialize the form.
@@ -137,7 +140,9 @@ public class updateKategori extends javax.swing.JDialog {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    c.update(this);
+    this.dispose();
+    view.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
 
 

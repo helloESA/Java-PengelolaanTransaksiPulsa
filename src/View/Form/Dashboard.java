@@ -602,6 +602,7 @@ public class Dashboard extends javax.swing.JFrame {
           User.setPassword("");
           User.setUsername("");
             new Login().show();
+            this.dispose();
         }
   }//GEN-LAST:event_labelLaporan1MouseClicked
 

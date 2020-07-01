@@ -5,8 +5,12 @@
  */
 package View.Dialog.Produk;
 
+import Controller.Produk.Control_produkAdd;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
+import View.Panel.produkPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,9 +21,33 @@ public class inputProduk extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public inputProduk() {
+  Control_produkAdd c;
+  produkPanel form;
+  
+  public inputProduk(produkPanel form) {
     initComponents();
+    this.form=form;
+    jLabel1.setVisible(false);
+    c = new Control_produkAdd(this);
   }
+
+  public JTextField getTxtHarga() {
+    return txtHarga;
+  }
+
+  public JTextArea getTxtKeterangan() {
+    return txtKeterangan;
+  }
+
+  public JTextField getTxtNama() {
+    return txtNama;
+  }
+
+  public JTextField getTxtProvider() {
+    return txtProvider;
+  }
+  
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -36,13 +64,13 @@ public class inputProduk extends javax.swing.JDialog {
     jLabel2 = new javax.swing.JLabel();
     jButton1 = new javax.swing.JButton();
     jLabel3 = new javax.swing.JLabel();
-    jTextField3 = new javax.swing.JTextField();
+    txtNama = new javax.swing.JTextField();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
+    txtKeterangan = new javax.swing.JTextArea();
     jLabel4 = new javax.swing.JLabel();
-    jTextField4 = new javax.swing.JTextField();
+    txtHarga = new javax.swing.JTextField();
     jLabel5 = new javax.swing.JLabel();
-    jTextField5 = new javax.swing.JTextField();
+    txtProvider = new javax.swing.JTextField();
     jButton2 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -64,9 +92,9 @@ public class inputProduk extends javax.swing.JDialog {
 
     jLabel3.setText("Keterangan");
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+    txtKeterangan.setColumns(20);
+    txtKeterangan.setRows(5);
+    jScrollPane1.setViewportView(txtKeterangan);
 
     jLabel4.setText("Harga");
 
@@ -96,11 +124,11 @@ public class inputProduk extends javax.swing.JDialog {
               .addComponent(jLabel5))
             .addGap(18, 18, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jTextField4)
-              .addComponent(jTextField3)
+              .addComponent(txtHarga)
+              .addComponent(txtNama)
               .addComponent(jScrollPane1)
               .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap())
@@ -113,12 +141,12 @@ public class inputProduk extends javax.swing.JDialog {
         .addGap(9, 9, 9)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jButton2))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -126,7 +154,7 @@ public class inputProduk extends javax.swing.JDialog {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(18, 18, Short.MAX_VALUE)
         .addComponent(jButton1)
         .addContainerGap())
@@ -161,10 +189,13 @@ public class inputProduk extends javax.swing.JDialog {
     );
 
     pack();
+    setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    c.insert(this);
+    this.dispose();
+    form.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -183,9 +214,9 @@ public class inputProduk extends javax.swing.JDialog {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextArea jTextArea1;
-  private javax.swing.JTextField jTextField3;
-  private javax.swing.JTextField jTextField4;
-  private javax.swing.JTextField jTextField5;
+  private javax.swing.JTextField txtHarga;
+  private javax.swing.JTextArea txtKeterangan;
+  private javax.swing.JTextField txtNama;
+  private javax.swing.JTextField txtProvider;
   // End of variables declaration//GEN-END:variables
 }

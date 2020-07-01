@@ -30,21 +30,19 @@ public class Control_userLogin {
   }
   
   public void cek_login (Login data){
-            if(!data.getTxtUname().getText().trim().isEmpty() && !data.getTxtPass().getText().trim().isEmpty()){
-                String nama = data.getTxtUname().getText();
-                String pass = data.getTxtPass().getText();
+           
+    String nama = data.getTxtUname().getText();
+    String pass = data.getTxtPass().getText();
                 
-                li = impl.getLogin(nama, pass);
+    li = impl.getLogin(nama, pass);
                 
-                if(li.size()==1){
-                    db.setVisible(true);
-                    form.setVisible(false);
-                } else{
-                    JOptionPane.showMessageDialog(data, "Username atau Password Tidak Valid");
-                }
-            } else{
-                JOptionPane.showMessageDialog(data, "Isi Username dan Password!");
-            }
+    if(li.size()==1){
+      db.setVisible(true);
+      form.setVisible(false);
+    } else{
+      JOptionPane.showMessageDialog(data, "Username atau Password Tidak Valid");
+    }
+           
     }
   
 }

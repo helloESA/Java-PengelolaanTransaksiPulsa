@@ -6,6 +6,7 @@
 package View.Panel;
 
 import Controller.Kategori.Control_kategoriList;
+import Controller.Produk.Control_produkList;
 import View.Dialog.Kategori.inputKategori;
 import View.Dialog.Kategori.updateKategori;
 import javax.swing.JTable;
@@ -20,7 +21,7 @@ public class kategoriPanel extends javax.swing.JPanel {
   /**
    * Creates new form userPanel
    */
-  updateKategori ubah = null;
+  public updateKategori ubah = null;
   Control_kategoriList c;
   
   public kategoriPanel() {

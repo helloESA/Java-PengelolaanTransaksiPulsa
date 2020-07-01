@@ -5,8 +5,13 @@
  */
 package View.Dialog.Produk;
 
+import Controller.Produk.Control_produkUpdate;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
+import View.Panel.produkPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,9 +22,46 @@ public class updateProduk extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public updateProduk() {
+  Control_produkUpdate c;
+  public String id, nama, keterangan, harga, provider;
+  produkPanel form;
+  
+  public updateProduk(produkPanel form) {
     initComponents();
+    this.form = form;
+    c = new Control_produkUpdate(this);
+    txtID.setVisible(false);
   }
+
+  public JTextField getTxtHarga() {
+    return txtHarga;
+  }
+
+  public JLabel getTxtID() {
+    return txtID;
+  }
+
+  public JTextArea getTxtKeterangan() {
+    return txtKeterangan;
+  }
+
+  public JTextField getTxtNama() {
+    return txtNama;
+  }
+
+  public JTextField getTxtProvider() {
+    return txtProvider;
+  }
+  
+  public void dipilih(){
+    form.ubah = this;
+    txtID.setText(id);
+    txtProvider.setText(provider);
+    txtNama.setText(nama);
+    txtKeterangan.setText(keterangan);
+    txtHarga.setText(harga);
+  }
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -32,15 +74,18 @@ public class updateProduk extends javax.swing.JDialog {
 
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
-    jLabel1 = new javax.swing.JLabel();
+    txtID = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
     jButton1 = new javax.swing.JButton();
     jLabel3 = new javax.swing.JLabel();
-    jTextField3 = new javax.swing.JTextField();
+    txtNama = new javax.swing.JTextField();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
+    txtKeterangan = new javax.swing.JTextArea();
     jLabel4 = new javax.swing.JLabel();
-    jTextField4 = new javax.swing.JTextField();
+    txtHarga = new javax.swing.JTextField();
+    jLabel5 = new javax.swing.JLabel();
+    txtProvider = new javax.swing.JTextField();
+    jButton2 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,7 +93,7 @@ public class updateProduk extends javax.swing.JDialog {
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
 
-    jLabel1.setText("ID");
+    txtID.setText("ID");
 
     jLabel2.setText("Nama Produk");
 
@@ -61,11 +106,20 @@ public class updateProduk extends javax.swing.JDialog {
 
     jLabel3.setText("Keterangan");
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+    txtKeterangan.setColumns(20);
+    txtKeterangan.setRows(5);
+    jScrollPane1.setViewportView(txtKeterangan);
 
     jLabel4.setText("Harga");
+
+    jLabel5.setText("Provider");
+
+    jButton2.setText("PROSES");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -75,16 +129,21 @@ public class updateProduk extends javax.swing.JDialog {
         .addContainerGap()
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addGroup(jPanel2Layout.createSequentialGroup()
+          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addComponent(jLabel2)
-              .addComponent(jLabel1)
+              .addComponent(txtID)
               .addComponent(jLabel3)
-              .addComponent(jLabel4))
+              .addComponent(jLabel4)
+              .addComponent(jLabel5))
             .addGap(18, 18, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addComponent(jTextField4)
-              .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
+              .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addComponent(txtHarga)
+              .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
               .addComponent(jScrollPane1))))
         .addContainerGap())
     );
@@ -92,11 +151,16 @@ public class updateProduk extends javax.swing.JDialog {
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jLabel1)
+        .addComponent(txtID)
+        .addGap(9, 9, 9)
+        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jButton2))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,7 +168,7 @@ public class updateProduk extends javax.swing.JDialog {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(18, 18, Short.MAX_VALUE)
         .addComponent(jButton1)
         .addContainerGap())
@@ -142,21 +206,30 @@ public class updateProduk extends javax.swing.JDialog {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    c.update(this);
+    this.dispose();
+    form.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
+
+  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jButton2ActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
-  private javax.swing.JLabel jLabel1;
+  private javax.swing.JButton jButton2;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
+  private javax.swing.JLabel jLabel5;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextArea jTextArea1;
-  private javax.swing.JTextField jTextField3;
-  private javax.swing.JTextField jTextField4;
+  private javax.swing.JTextField txtHarga;
+  private javax.swing.JLabel txtID;
+  private javax.swing.JTextArea txtKeterangan;
+  private javax.swing.JTextField txtNama;
+  private javax.swing.JTextField txtProvider;
   // End of variables declaration//GEN-END:variables
 }
