@@ -6,6 +6,7 @@
 package View.Panel;
 
 import Controller.Produk.Control_produkList;
+import Controller.Provider.Control_providerList;
 import View.Dialog.Kategori.updateKategori;
 import View.Dialog.Produk.inputProduk;
 import View.Dialog.Produk.updateProduk;
@@ -92,11 +93,21 @@ public class produkPanel extends javax.swing.JPanel {
     btnEdit.setBackground(new java.awt.Color(255, 193, 7));
     btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/edit.png"))); // NOI18N
     btnEdit.setPreferredSize(new java.awt.Dimension(75, 25));
+    btnEdit.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnEditActionPerformed(evt);
+      }
+    });
     jPanel1.add(btnEdit);
 
     btnDelete.setBackground(new java.awt.Color(220, 53, 69));
     btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/delete.png"))); // NOI18N
     btnDelete.setPreferredSize(new java.awt.Dimension(75, 25));
+    btnDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteActionPerformed(evt);
+      }
+    });
     jPanel1.add(btnDelete);
 
     tabelDataProduk.setModel(new javax.swing.table.DefaultTableModel(
@@ -212,6 +223,9 @@ public class produkPanel extends javax.swing.JPanel {
 
   private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     new inputProduk(this).setVisible(true);
+    btnAdd.setEnabled(true);
+    btnDelete.setEnabled(false);
+    btnEdit.setEnabled(false);
   }//GEN-LAST:event_btnAddActionPerformed
 
   private void tabelDataProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataProdukMouseClicked
@@ -230,6 +244,18 @@ public class produkPanel extends javax.swing.JPanel {
     btnDelete.setEnabled(true);
     btnEdit.setEnabled(true);
   }//GEN-LAST:event_tabelDataProdukMouseClicked
+
+  private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+    ubah.setVisible(true);
+  }//GEN-LAST:event_btnEditActionPerformed
+
+  private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    c.delete(jLabel2.getText());
+    refresh();
+    btnAdd.setEnabled(true);
+    btnDelete.setEnabled(false);
+    btnEdit.setEnabled(false);
+  }//GEN-LAST:event_btnDeleteActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

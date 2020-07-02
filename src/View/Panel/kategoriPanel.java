@@ -6,7 +6,7 @@
 package View.Panel;
 
 import Controller.Kategori.Control_kategoriList;
-import Controller.Produk.Control_produkList;
+import Controller.Provider.Control_providerList;
 import View.Dialog.Kategori.inputKategori;
 import View.Dialog.Kategori.updateKategori;
 import javax.swing.JTable;
@@ -101,6 +101,11 @@ public class kategoriPanel extends javax.swing.JPanel {
     btnDelete.setBackground(new java.awt.Color(220, 53, 69));
     btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/delete.png"))); // NOI18N
     btnDelete.setPreferredSize(new java.awt.Dimension(75, 25));
+    btnDelete.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnDeleteActionPerformed(evt);
+      }
+    });
     jPanel1.add(btnDelete);
 
     tabelDataKategori.setModel(new javax.swing.table.DefaultTableModel(
@@ -230,11 +235,22 @@ public class kategoriPanel extends javax.swing.JPanel {
 
   private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     new inputKategori(this).setVisible(true);
+    btnAdd.setEnabled(true);
+    btnDelete.setEnabled(false);
+    btnEdit.setEnabled(false);
   }//GEN-LAST:event_btnAddActionPerformed
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
     c.search(this);
   }//GEN-LAST:event_jButton4ActionPerformed
+
+  private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+    c.delete(jLabel2.getText());
+    refresh();
+    btnAdd.setEnabled(true);
+    btnDelete.setEnabled(false);
+    btnEdit.setEnabled(false);
+  }//GEN-LAST:event_btnDeleteActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

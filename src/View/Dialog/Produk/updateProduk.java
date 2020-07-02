@@ -6,6 +6,7 @@
 package View.Dialog.Produk;
 
 import Controller.Produk.Control_produkUpdate;
+import Controller.Provider.Control_providerUpdate;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
 import View.Panel.produkPanel;
@@ -28,6 +29,7 @@ public class updateProduk extends javax.swing.JDialog {
   
   public updateProduk(produkPanel form) {
     initComponents();
+    this.setLocationRelativeTo(form);
     this.form = form;
     c = new Control_produkUpdate(this);
     txtID.setVisible(false);

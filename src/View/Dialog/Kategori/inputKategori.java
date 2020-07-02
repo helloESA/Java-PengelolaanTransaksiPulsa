@@ -6,7 +6,7 @@
 package View.Dialog.Kategori;
 
 import Controller.Kategori.Control_kategoriAdd;
-import Controller.Produk.Control_produkAdd;
+import Controller.Provider.Control_providerAdd;
 import View.Panel.kategoriPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -26,6 +26,7 @@ public class inputKategori extends javax.swing.JDialog {
   public inputKategori(kategoriPanel form) {
     initComponents();
     c = new Control_kategoriAdd(this);
+    this.setLocationRelativeTo(form);
     this.form=form;
     jLabel1.setVisible(false);
   }

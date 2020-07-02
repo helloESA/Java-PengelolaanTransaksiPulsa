@@ -6,7 +6,7 @@
 package View.Dialog.Kategori;
 
 import Controller.Kategori.Control_kategoriUpdate;
-import Controller.Produk.Control_produkUpdate;
+import Controller.Provider.Control_providerUpdate;
 import View.Panel.kategoriPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,6 +26,7 @@ public class updateKategori extends javax.swing.JDialog {
   
   public updateKategori(kategoriPanel view) {
     initComponents();
+    this.setLocationRelativeTo(view);
     c = new Control_kategoriUpdate(this);
     this.view=view;
     txtID.setVisible(false);

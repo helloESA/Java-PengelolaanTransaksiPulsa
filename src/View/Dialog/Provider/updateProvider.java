@@ -5,7 +5,11 @@
  */
 package View.Dialog.Provider;
 
+import Controller.Provider.Control_providerUpdate;
 import View.Dialog.Kategori.*;
+import View.Panel.providerPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -16,9 +20,38 @@ public class updateProvider extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public updateProvider() {
+  providerPanel view;
+  public String id, kategori, nama;
+  Control_providerUpdate c;
+  
+  public updateProvider(providerPanel view) {
     initComponents();
+    c = new Control_providerUpdate(this);
+    this.view=view;
+    this.setLocationRelativeTo(view);
+    jLabel1.setVisible(false);
   }
+
+  public JLabel getjLabel1() {
+    return jLabel1;
+  }
+
+  public JTextField getTxtKategori() {
+    return txtKategori;
+  }
+
+  public JTextField getTxtNama() {
+    return txtNama;
+  }
+  
+  public void dipilih(){
+    view.ubah = this;
+    jLabel1.setText(id);
+    txtKategori.setText(kategori);
+    txtNama.setText(nama);
+  }
+  
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -34,9 +67,10 @@ public class updateProvider extends javax.swing.JDialog {
     jLabel1 = new javax.swing.JLabel();
     jLabel2 = new javax.swing.JLabel();
     jButton1 = new javax.swing.JButton();
-    jComboBox1 = new javax.swing.JComboBox<>();
     jLabel3 = new javax.swing.JLabel();
-    jTextField2 = new javax.swing.JTextField();
+    txtNama = new javax.swing.JTextField();
+    txtKategori = new javax.swing.JTextField();
+    jButton2 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,11 +89,14 @@ public class updateProvider extends javax.swing.JDialog {
       }
     });
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
     jLabel3.setText("Provider");
 
-    jTextField2.setText("jTextField2");
+    jButton2.setText("PROSES");
+    jButton2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton2ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -75,9 +112,12 @@ public class updateProvider extends javax.swing.JDialog {
               .addComponent(jLabel1)
               .addComponent(jLabel3))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-              .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE))))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
@@ -88,11 +128,13 @@ public class updateProvider extends javax.swing.JDialog {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+            .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jButton2)))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addGap(18, 18, 18)
         .addComponent(jButton1)
         .addContainerGap(14, Short.MAX_VALUE))
@@ -130,18 +172,26 @@ public class updateProvider extends javax.swing.JDialog {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    c.update(this);
+    this.dispose();
+    view.refresh();
+    
   }//GEN-LAST:event_jButton1ActionPerformed
+
+  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jButton2ActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
-  private javax.swing.JComboBox<String> jComboBox1;
+  private javax.swing.JButton jButton2;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JTextField jTextField2;
+  private javax.swing.JTextField txtKategori;
+  private javax.swing.JTextField txtNama;
   // End of variables declaration//GEN-END:variables
 }

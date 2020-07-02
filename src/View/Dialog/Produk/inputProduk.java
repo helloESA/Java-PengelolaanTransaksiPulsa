@@ -6,6 +6,7 @@
 package View.Dialog.Produk;
 
 import Controller.Produk.Control_produkAdd;
+import Controller.Provider.Control_providerAdd;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
 import View.Panel.produkPanel;
@@ -26,6 +27,7 @@ public class inputProduk extends javax.swing.JDialog {
   
   public inputProduk(produkPanel form) {
     initComponents();
+    this.setLocationRelativeTo(form);
     this.form=form;
     jLabel1.setVisible(false);
     c = new Control_produkAdd(this);
