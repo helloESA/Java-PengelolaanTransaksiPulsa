@@ -6,6 +6,7 @@
 package View.Form;
 
 import Model.User;
+import Model.UserSession;
 import View.Dialog.Login.Login;
 import View.Dialog.muatGambar;
 import View.Panel.berandaPanel;
@@ -38,25 +39,30 @@ public class Dashboard extends javax.swing.JFrame {
     String namaproject = "Pengelolaan Transaksi Pulsa";
     String versi = "Alpha";
     String file = "/Assets/Logo.png";
-    String unem = User.getNama();
+    
     public Dashboard() {
         initComponents();
         this.setTitle(namaproject+" - "+versi);
         this.setExtendedState(MAXIMIZED_BOTH);
+        prepare();
+    }
+
+
+    public void prepare(){
+      String unem = UserSession.getNama();
+      System.out.println(unem);
+        txtUsername.setText(unem);
+        
         panelBody.add(panel1, "user");
         panelBody.add(panel2, "beranda");
         panelBody.add(panel3, "transaksi");
         panelBody.add(panel4, "kategori");
         panelBody.add(panel5, "produk");
         panelBody.add(panel6, "provider");
-        System.out.println(unem);
-        txtUsername.setText(unem);
+        
         CardLayout cl = (CardLayout) panelBody.getLayout();
         cl.show(panelBody, "beranda");
     }
-
-
- 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -597,10 +603,10 @@ public class Dashboard extends javax.swing.JFrame {
     btnLaporan1.setBackground(new Color(178, 190, 200));
     int ok = JOptionPane.showConfirmDialog(null, "Yakin Ingin Keluar Akun?","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if (ok==0){
-          User.setId("");
-          User.setNama("");
-          User.setPassword("");
-          User.setUsername("");
+            UserSession.setId(null);
+            UserSession.setNama(null);
+            UserSession.setUsername(null);
+            UserSession.setPassword(null);
             new Login().show();
             this.dispose();
         }

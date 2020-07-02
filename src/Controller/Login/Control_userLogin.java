@@ -8,6 +8,7 @@ package Controller.Login;
 import DAO.DAO_User;
 import DAOImplements.Implement_User;
 import Model.User;
+import Model.UserSession;
 import View.Dialog.Login.Login;
 import View.Form.Dashboard;
 import java.util.List;
@@ -37,6 +38,9 @@ public class Control_userLogin {
     li = impl.getLogin(nama, pass);
                 
     if(li.size()==1){
+      System.out.println("[01]"+UserSession.getId()+","+UserSession.getNama());
+      User m = new User();
+      System.out.println("[02]"+m.getId()+","+m.getNama());
       db.setVisible(true);
       form.setVisible(false);
     } else{

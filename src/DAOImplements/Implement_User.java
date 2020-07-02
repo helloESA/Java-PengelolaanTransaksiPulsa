@@ -8,6 +8,7 @@ package DAOImplements;
 import Config.DBUtilities;
 import DAO.DAO_User;
 import Model.User;
+import Model.UserSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,16 +31,18 @@ public class Implement_User implements DAO_User{
   @Override
   public List<User> getALL() {
     con = DBUtilities.config();
-    Statement sta = null;
-    ResultSet res = null;
+    
     List<User> li = null;
+    List<UserSession> lis = null;
     
     try {
       String q = "SELECT * FROM `user` ORDER BY id_user DESC";
       
       li = new ArrayList<>();
-      sta = con.createStatement();
-      res = sta.executeQuery(q);
+      lis = new ArrayList<>();
+      
+      Statement sta = con.createStatement();
+      ResultSet res = sta.executeQuery(q);
       
       while(res.next()){
         User m = new User();
@@ -47,20 +50,19 @@ public class Implement_User implements DAO_User{
         m.setNama(res.getString("nama_user"));
         m.setUsername(res.getString("username"));
         m.setPassword(res.getString("password"));
-        
         li.add(m);
+        
+        UserSession u = new UserSession();
+        u.setId(res.getString("id_user"));
+        u.setNama(res.getString("nama_user"));
+        u.setUsername(res.getString("username"));
+        u.setPassword(res.getString("password"));
+        lis.add(u);
       }
       
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Ditampilkan","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
     }
     return li;
   }
@@ -68,44 +70,34 @@ public class Implement_User implements DAO_User{
   @Override
   public List<User> getLogin(String username, String password) {
     con = DBUtilities.config();
-    Statement sta = null;
-    ResultSet res = null;
     List<User> li = null;
-    String id = null, nama = null, uname = null, pass = null;
     User m = null;
+    String id, nama, uname, pass;
     try {
       String q = "SELECT * FROM `user` WHERE username='"+username+"' AND password = MD5('"+password+"')";
       
       li = new ArrayList<>();
-      sta = con.createStatement();
-      res = sta.executeQuery(q);
+      Statement sta = con.createStatement();
+      ResultSet res = sta.executeQuery(q);
       
       while(res.next()){
         m = new User();
-        id = res.getString("id_user");
-        nama = res.getString("nama_user");
-        uname = res.getString("username");
-        pass = res.getString("password");
-      }
-      res.last();
-      if(res.getRow()==1){
-        m.setId(id);
-        m.setNama(nama);
-        m.setUsername(uname);
-        m.setPassword(pass);
+        m.setId(res.getString("id_user"));
+        m.setNama(res.getString("nama_user"));
+        m.setUsername(res.getString("username"));
+        m.setPassword(res.getString("password"));
+        
+        UserSession.setId(res.getString("id_user"));
+        UserSession.setNama(res.getString("nama_user"));
+        UserSession.setUsername(res.getString("username"));
+        UserSession.setPassword(res.getString("password"));
       }
       li.add(m);
+      System.out.println(UserSession.getNama());
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[101]\nLogin Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[101] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
     return li;
   }
 

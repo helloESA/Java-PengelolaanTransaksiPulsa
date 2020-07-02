@@ -30,7 +30,7 @@ public class SplashScreen extends javax.swing.JDialog {
     this.setLocationRelativeTo(null);
     txtVersi.setText(versi);
     prepare();
-    timer = new Timer(75, al);
+    timer = new Timer(55, al);
     timer.start();
   }
   
