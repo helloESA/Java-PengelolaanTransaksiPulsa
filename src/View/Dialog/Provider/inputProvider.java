@@ -7,6 +7,7 @@ package View.Dialog.Provider;
 
 import Controller.Provider.Control_providerAdd;
 import View.Dialog.Kategori.*;
+import View.List.listKategori;
 import View.Panel.providerPanel;
 import javax.swing.JTextField;
 
@@ -78,6 +79,8 @@ public class inputProvider extends javax.swing.JDialog {
 
     jLabel3.setText("Provider");
 
+    txtKategori.setEditable(false);
+
     jButton2.setText("PROSES");
     jButton2.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,10 +102,10 @@ public class inputProvider extends javax.swing.JDialog {
               .addComponent(jLabel1)
               .addComponent(jLabel3))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
               .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
               .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtKategori)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap())
@@ -164,7 +167,7 @@ public class inputProvider extends javax.swing.JDialog {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    // TODO add your handling code here:
+    new listKategori(this, new updateProvider(view)).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
 

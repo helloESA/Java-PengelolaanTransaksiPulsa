@@ -3,53 +3,44 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controller.Kategori;
+package Controller.List;
 
-import Controller.User.*;
 import DAO.DAO_Kategori;
-import DAO.DAO_User;
 import DAOImplements.Implement_Kategori;
-import DAOImplements.Implement_User;
 import Model.Kategori;
-import Model.User;
 import TableModel.TM_Kategori;
-import TableModel.TM_User;
 import View.List.listKategori;
-import View.Panel.kategoriPanel;
-import View.Panel.userPanel;
 import java.util.List;
 
 /**
  *
  * @author MohamadEsa
  */
-public class Control_kategoriList {
-  kategoriPanel v;
+public class Control_listKategori {
+  listKategori v;
   DAO_Kategori impl;
   List<Kategori> li;
   
-  public Control_kategoriList(kategoriPanel v){
-    this.v = v;
+  public Control_listKategori(listKategori v){
+    this.v=v;
     impl = new Implement_Kategori();
   }
   
-  public void isiTable(){
+  
+  
+   public void isiTable(){
     li = impl.getALL();
     TM_Kategori tabel = new TM_Kategori(li);
-    v.getTabelDataKategori().setModel(tabel);
+    v.getTabelListKategori().setModel(tabel);
   }
-  
-  public void delete(String kode){
-    impl.delete(kode);
-  }
-  
-  public void isiTableCari(){
+   
+   public void isiTableCari(){
         li = impl.getSearch(v.getTxtCari().getText());
         TM_Kategori table = new TM_Kategori(li);
-        v.getTabelDataKategori().setModel(table);
+        v.getTabelListKategori().setModel(table);
     }
     
-    public void search(kategoriPanel data){
+    public void search(listKategori data){
         if(!data.getTxtCari().getText().isEmpty()){
             impl.getSearch(v.getTxtCari().getText());
             isiTableCari();

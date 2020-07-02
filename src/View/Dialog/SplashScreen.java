@@ -19,7 +19,7 @@ public class SplashScreen extends javax.swing.JDialog {
   /**
    * Creates new form SplashScreen
    */
-  String versi = "Alpha Version";
+  String versi = "Version 1.0.1";
   String file = "/Assets/splash.png";
   
   Timer timer;

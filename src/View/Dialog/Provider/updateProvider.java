@@ -7,6 +7,7 @@ package View.Dialog.Provider;
 
 import Controller.Provider.Control_providerUpdate;
 import View.Dialog.Kategori.*;
+import View.List.listKategori;
 import View.Panel.providerPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -91,6 +92,8 @@ public class updateProvider extends javax.swing.JDialog {
 
     jLabel3.setText("Provider");
 
+    txtKategori.setEditable(false);
+
     jButton2.setText("PROSES");
     jButton2.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,11 +129,11 @@ public class updateProvider extends javax.swing.JDialog {
         .addContainerGap()
         .addComponent(jLabel1)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
             .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton2)))
+            .addComponent(jButton2))
+          .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -179,7 +182,7 @@ public class updateProvider extends javax.swing.JDialog {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    // TODO add your handling code here:
+    new listKategori(new inputProvider(view), this).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
 

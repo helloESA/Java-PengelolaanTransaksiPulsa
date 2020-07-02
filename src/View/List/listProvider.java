@@ -5,45 +5,18 @@
  */
 package View.List;
 
-import Controller.List.Control_listKategori;
-import View.Dialog.Kategori.inputKategori;
-import View.Dialog.Provider.inputProvider;
-import View.Dialog.Provider.updateProvider;
-import javax.swing.JTable;
-import javax.swing.JTextField;
-
 /**
  *
  * @author MohamadEsa
  */
-public class listKategori extends javax.swing.JDialog {
+public class listProvider extends javax.swing.JDialog {
 
   /**
    * Creates new form listKategori
    */
-  Control_listKategori c;
-  inputProvider view;
-  updateProvider view2;
-  
-  public listKategori(inputProvider view, updateProvider view2){
+  public listProvider(){
     initComponents();
-    this.setLocationRelativeTo(view);
-    this.view=view;
-    this.view2=view2;
-    c = new Control_listKategori(this);
-    c.isiTable();
   }
-  
-
-  public JTable getTabelListKategori() {
-    return tabelListKategori;
-  }
-
-  public JTextField getTxtCari() {
-    return txtCari;
-  }
-  
-  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -58,7 +31,7 @@ public class listKategori extends javax.swing.JDialog {
     jPanel2 = new javax.swing.JPanel();
     txtCari = new javax.swing.JTextField();
     jScrollPane3 = new javax.swing.JScrollPane();
-    tabelListKategori = new javax.swing.JTable();
+    tabelListProvider = new javax.swing.JTable();
     jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -67,13 +40,7 @@ public class listKategori extends javax.swing.JDialog {
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
 
-    txtCari.addKeyListener(new java.awt.event.KeyAdapter() {
-      public void keyPressed(java.awt.event.KeyEvent evt) {
-        txtCariKeyPressed(evt);
-      }
-    });
-
-    tabelListKategori.setModel(new javax.swing.table.DefaultTableModel(
+    tabelListProvider.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
         {null, null, null, null},
         {null, null, null, null},
@@ -84,12 +51,7 @@ public class listKategori extends javax.swing.JDialog {
         "Title 1", "Title 2", "Title 3", "Title 4"
       }
     ));
-    tabelListKategori.addMouseListener(new java.awt.event.MouseAdapter() {
-      public void mouseClicked(java.awt.event.MouseEvent evt) {
-        tabelListKategoriMouseClicked(evt);
-      }
-    });
-    jScrollPane3.setViewportView(tabelListKategori);
+    jScrollPane3.setViewportView(tabelListProvider);
 
     jLabel1.setText("Cari");
 
@@ -150,29 +112,17 @@ public class listKategori extends javax.swing.JDialog {
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
-  private void tabelListKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelListKategoriMouseClicked
-    
-    view.getTxtKategori().setText((String) tabelListKategori.getValueAt(tabelListKategori.getSelectedRow(), 1));
-    
-    view2.getTxtKategori().setText((String) tabelListKategori.getValueAt(tabelListKategori.getSelectedRow(), 1));
-    this.dispose();
-  }//GEN-LAST:event_tabelListKategoriMouseClicked
-
-  private void txtCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyPressed
-    c.search(this);
-  }//GEN-LAST:event_txtCariKeyPressed
-
   /**
    * @param args the command line arguments
    */
- 
+  
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel jLabel1;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane3;
-  private javax.swing.JTable tabelListKategori;
+  private javax.swing.JTable tabelListProvider;
   private javax.swing.JTextField txtCari;
   // End of variables declaration//GEN-END:variables
 }

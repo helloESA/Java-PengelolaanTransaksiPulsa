@@ -37,7 +37,7 @@ public class Dashboard extends javax.swing.JFrame {
     private final produkPanel panel5 = new produkPanel();
     private final providerPanel panel6 = new providerPanel();
     String namaproject = "Pengelolaan Transaksi Pulsa";
-    String versi = "Alpha";
+    String versi = "1.0.1";
     String file = "/Assets/Logo.png";
     
     public Dashboard() {
@@ -49,9 +49,7 @@ public class Dashboard extends javax.swing.JFrame {
 
 
     public void prepare(){
-      String unem = UserSession.getNama();
-      System.out.println(unem);
-        txtUsername.setText(unem);
+        txtUsername.setText("PTP - "+versi);
         
         panelBody.add(panel1, "user");
         panelBody.add(panel2, "beranda");
