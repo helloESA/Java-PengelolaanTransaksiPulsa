@@ -5,6 +5,12 @@
  */
 package View.List;
 
+import Controller.List.Control_listProvider;
+import View.Dialog.Produk.inputProduk;
+import View.Dialog.Produk.updateProduk;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author MohamadEsa
@@ -14,10 +20,28 @@ public class listProvider extends javax.swing.JDialog {
   /**
    * Creates new form listKategori
    */
-  public listProvider(){
+  inputProduk view;
+  updateProduk view2;
+  Control_listProvider c;
+  
+  public listProvider(inputProduk view, updateProduk view2){
     initComponents();
+    this.view=view;
+    this.view2=view2;
+    this.setLocationRelativeTo(view2);
+    c = new Control_listProvider(this);
+    c.isiTable();
   }
 
+  public JTable getTabelListProvider() {
+    return tabelListProvider;
+  }
+
+  public JTextField getTxtCari() {
+    return txtCari;
+  }
+
+  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,6 +75,11 @@ public class listProvider extends javax.swing.JDialog {
         "Title 1", "Title 2", "Title 3", "Title 4"
       }
     ));
+    tabelListProvider.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tabelListProviderMouseClicked(evt);
+      }
+    });
     jScrollPane3.setViewportView(tabelListProvider);
 
     jLabel1.setText("Cari");
@@ -111,6 +140,12 @@ public class listProvider extends javax.swing.JDialog {
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
+
+  private void tabelListProviderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelListProviderMouseClicked
+    view.getTxtProvider().setText((String) tabelListProvider.getValueAt(tabelListProvider.getSelectedRow(), 2));
+    view2.getTxtProvider().setText((String) tabelListProvider.getValueAt(tabelListProvider.getSelectedRow(), 2));
+    this.dispose();
+  }//GEN-LAST:event_tabelListProviderMouseClicked
 
   /**
    * @param args the command line arguments

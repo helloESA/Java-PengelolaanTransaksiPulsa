@@ -6,9 +6,7 @@
 package View.Dialog.Produk;
 
 import Controller.Produk.Control_produkAdd;
-import Controller.Provider.Control_providerAdd;
-import View.Dialog.Provider.*;
-import View.Dialog.Kategori.*;
+import View.List.listProvider;
 import View.Panel.produkPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -23,12 +21,12 @@ public class inputProduk extends javax.swing.JDialog {
    * Creates new form MenuMaster
    */
   Control_produkAdd c;
-  produkPanel form;
+  produkPanel view;
   
-  public inputProduk(produkPanel form) {
+  public inputProduk(produkPanel view) {
     initComponents();
-    this.setLocationRelativeTo(form);
-    this.form=form;
+    this.setLocationRelativeTo(view);
+    this.view=view;
     jLabel1.setVisible(false);
     c = new Control_produkAdd(this);
   }
@@ -101,6 +99,8 @@ public class inputProduk extends javax.swing.JDialog {
     jLabel4.setText("Harga");
 
     jLabel5.setText("Provider");
+
+    txtProvider.setEditable(false);
 
     jButton2.setText("PROSES");
     jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -197,11 +197,11 @@ public class inputProduk extends javax.swing.JDialog {
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     c.insert(this);
     this.dispose();
-    form.refresh();
+    view.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    // TODO add your handling code here:
+    new listProvider(this, new updateProduk(view)).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
 

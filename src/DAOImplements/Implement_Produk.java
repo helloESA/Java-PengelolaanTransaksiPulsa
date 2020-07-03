@@ -157,13 +157,14 @@ public class Implement_Produk implements DAO_Produk{
     PreparedStatement stat = null;
     
     try {
-      String q = "UPDATE `produk` SET ``provider`=?,`nama_produk`=?,`keterangan`=?,`harga`=? WHERE id_produk`=?";
+      String q = "UPDATE `produk` SET `provider`=?,`nama_produk`=?,`keterangan`=?,`harga`=? WHERE `id_produk`=?";
+      stat = con.prepareStatement(q);
       stat.setString(1, provider);
       stat.setString(2, nama);
       stat.setString(3, keterangan);
       stat.setString(4, harga);
       stat.setString(5, id);
-      stat = con.prepareStatement(q);
+      
       
       stat.executeUpdate();
       

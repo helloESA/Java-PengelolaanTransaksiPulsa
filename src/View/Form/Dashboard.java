@@ -17,7 +17,12 @@ import View.Panel.transaksiPanel;
 import View.Panel.userPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -37,20 +42,61 @@ public class Dashboard extends javax.swing.JFrame {
     private final produkPanel panel5 = new produkPanel();
     private final providerPanel panel6 = new providerPanel();
     String namaproject = "Pengelolaan Transaksi Pulsa";
-    String versi = "1.0.1";
+    String versi = "1.0.2";
     String file = "/Assets/Logo.png";
     
     public Dashboard() {
         initComponents();
         this.setTitle(namaproject+" - "+versi);
+        this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         prepare();
+        
+    }
+
+    public final void tampilkanJam(){
+        ActionListener taskPerformer = new ActionListener() {
+
+        public void actionPerformed(ActionEvent evt) {
+        String nol_jam = "", nol_menit = "",nol_detik = "";
+
+        java.util.Date dateTime = new java.util.Date();
+        int nilai_jam = dateTime.getHours();
+        int nilai_menit = dateTime.getMinutes();
+        int nilai_detik = dateTime.getSeconds();
+
+        if(nilai_jam <= 9) nol_jam= "0";
+        if(nilai_menit <= 9) nol_menit= "0";
+        if(nilai_detik <= 9) nol_detik="0";
+        
+
+        String jam = nol_jam + Integer.toString(nilai_jam);
+        String menit = nol_menit + Integer.toString(nilai_menit);
+        String detik = nol_detik + Integer.toString(nilai_detik);
+        
+        String nol_hari = "", nol_bulan = "",nol_tahun = "";
+        Calendar kalender = new GregorianCalendar();
+        int nilai_hari = dateTime.getDate();
+        int nilai_bulan = dateTime.getMonth()+1;
+        int nilai_tahun = kalender.get(Calendar.YEAR);
+
+        if(nilai_hari <= 9) nol_hari= "0";
+        if(nilai_bulan <= 9) nol_bulan= "0";
+
+        String hari = nol_hari + Integer.toString(nilai_hari);
+        String bulan = nol_bulan + Integer.toString(nilai_bulan);
+        String tahun = Integer.toString(nilai_tahun);
+        
+        labelJam.setText(hari+"-"+bulan+"-"+tahun+" || "+jam+" : "+menit+" : "+detik+" WIB");
+        }
+        };
+        new Timer(1000, taskPerformer).start();
     }
 
 
     public void prepare(){
         txtUsername.setText("PTP - "+versi);
-        
+        tampilkanJam();
         panelBody.add(panel1, "user");
         panelBody.add(panel2, "beranda");
         panelBody.add(panel3, "transaksi");
@@ -98,7 +144,7 @@ public class Dashboard extends javax.swing.JFrame {
     jButton4 = new javax.swing.JButton();
     jLabel2 = new javax.swing.JLabel();
     jPanel2 = new javax.swing.JPanel();
-    jLabel3 = new javax.swing.JLabel();
+    labelJam = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setState(56);
@@ -458,7 +504,8 @@ public class Dashboard extends javax.swing.JFrame {
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
 
-    jLabel3.setText("yyyy-MMMMM-dd || 00:00 WIB");
+    labelJam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    labelJam.setText("yyyy-MMMMM-dd || 00:00 WIB");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -466,15 +513,12 @@ public class Dashboard extends javax.swing.JFrame {
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel3)
+        .addComponent(labelJam)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        .addComponent(jLabel3)
-        .addContainerGap())
+      .addComponent(labelJam, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
     );
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -631,7 +675,6 @@ public class Dashboard extends javax.swing.JFrame {
   private javax.swing.JButton jButton3;
   private javax.swing.JButton jButton4;
   private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
@@ -643,6 +686,7 @@ public class Dashboard extends javax.swing.JFrame {
   private javax.swing.JScrollPane jScrollPane1;
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JLabel labelBeranda;
+  private javax.swing.JLabel labelJam;
   private javax.swing.JLabel labelLaporan;
   private javax.swing.JLabel labelLaporan1;
   private javax.swing.JLabel labelMaster;

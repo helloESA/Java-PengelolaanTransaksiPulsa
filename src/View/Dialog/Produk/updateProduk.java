@@ -9,6 +9,7 @@ import Controller.Produk.Control_produkUpdate;
 import Controller.Provider.Control_providerUpdate;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
+import View.List.listProvider;
 import View.Panel.produkPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -25,12 +26,12 @@ public class updateProduk extends javax.swing.JDialog {
    */
   Control_produkUpdate c;
   public String id, nama, keterangan, harga, provider;
-  produkPanel form;
+  produkPanel view;
   
-  public updateProduk(produkPanel form) {
+  public updateProduk(produkPanel view) {
     initComponents();
-    this.setLocationRelativeTo(form);
-    this.form = form;
+    this.setLocationRelativeTo(view);
+    this.view = view;
     c = new Control_produkUpdate(this);
     txtID.setVisible(false);
   }
@@ -56,7 +57,7 @@ public class updateProduk extends javax.swing.JDialog {
   }
   
   public void dipilih(){
-    form.ubah = this;
+    view.ubah = this;
     txtID.setText(id);
     txtProvider.setText(provider);
     txtNama.setText(nama);
@@ -116,6 +117,8 @@ public class updateProduk extends javax.swing.JDialog {
 
     jLabel5.setText("Provider");
 
+    txtProvider.setEditable(false);
+
     jButton2.setText("PROSES");
     jButton2.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,9 +143,9 @@ public class updateProduk extends javax.swing.JDialog {
               .addComponent(jLabel5))
             .addGap(18, 18, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(txtProvider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
               .addComponent(txtHarga)
               .addComponent(txtNama, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)
@@ -210,11 +213,11 @@ public class updateProduk extends javax.swing.JDialog {
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     c.update(this);
     this.dispose();
-    form.refresh();
+    view.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    // TODO add your handling code here:
+    new listProvider(new inputProduk(view), this).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
 
