@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author MohamadEsa
  */
-public class DBUtilities implements DBConfig{
+public class DBUtilities implements Config{
   private static Connection con;
     
     public static Connection config(){

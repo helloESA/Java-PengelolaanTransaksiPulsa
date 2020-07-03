@@ -23,12 +23,13 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import Config.Config;
 
 /**
  *
  * @author MohamadEsa
  */
-public class Dashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame implements Config{
 
     /**
      * Creates new form Dashboard
@@ -41,13 +42,12 @@ public class Dashboard extends javax.swing.JFrame {
     private final kategoriPanel panel4 = new kategoriPanel();
     private final produkPanel panel5 = new produkPanel();
     private final providerPanel panel6 = new providerPanel();
-    String namaproject = "Pengelolaan Transaksi Pulsa";
-    String versi = "1.0.2";
+    
     String file = "/Assets/Logo.png";
     
     public Dashboard() {
         initComponents();
-        this.setTitle(namaproject+" - "+versi);
+        this.setTitle(project_name+" - "+versi);
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         prepare();

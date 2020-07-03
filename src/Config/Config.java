@@ -9,9 +9,12 @@ package Config;
  *
  * @author MohamadEsa
  */
-public interface DBConfig {
+public interface Config {
     String user = "root";
     String pass = "";
     String driver = "com.mysql.jdbc.Driver";
     String link = "jdbc:mysql://localhost:3306/mpt_pulsa";
+    
+    String versi = "1.0.4";
+    String project_name = "Pengelolaan Transaksi Pulsa";
 }

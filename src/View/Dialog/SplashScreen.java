@@ -9,17 +9,18 @@ import View.Dialog.Login.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+import Config.Config;
 
 /**
  *
  * @author MohamadEsa
  */
-public class SplashScreen extends javax.swing.JDialog {
+public class SplashScreen extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form SplashScreen
    */
-  String versi = "Version 1.0.1";
+
   String file = "/Assets/splash.png";
   
   Timer timer;

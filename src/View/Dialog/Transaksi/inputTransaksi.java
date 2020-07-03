@@ -5,9 +5,17 @@
  */
 package View.Dialog.Transaksi;
 
+import Controller.Transaksi.Control_transaksiAdd;
 import View.Dialog.Produk.*;
 import View.Dialog.Provider.*;
 import View.Dialog.Kategori.*;
+import View.Panel.transaksiPanel;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -18,9 +26,74 @@ public class inputTransaksi extends javax.swing.JDialog {
   /**
    * Creates new form MenuMaster
    */
-  public inputTransaksi() {
+  transaksiPanel view;
+  Control_transaksiAdd c;
+  
+  public inputTransaksi(transaksiPanel view) {
     initComponents();
+    c = new Control_transaksiAdd(this);
+    this.view=view;
+    this.setLocationRelativeTo(view);
+    jLabel1.setVisible(false);
+    waktu_pesan();
   }
+
+  public JComboBox<String> getCbPembayaran() {
+    return cbPembayaran;
+  }
+
+  public JComboBox<String> getCbStatus() {
+    return cbStatus;
+  }
+
+  public JTextField getTxtHarga() {
+    return txtHarga;
+  }
+
+  public JTextField getTxtKategori() {
+    return txtKategori;
+  }
+
+  public JTextArea getTxtKeterangan() {
+    return txtKeterangan;
+  }
+
+  public JTextField getTxtNo_pel() {
+    return txtNo_pel;
+  }
+
+  public JTextField getTxtProduk() {
+    return txtProduk;
+  }
+
+  public JTextField getTxtProvider() {
+    return txtProvider;
+  }
+
+  public JTextField getTxtSN_id() {
+    return txtSN_id;
+  }
+
+  public JTextField getTxtTgl_bayar() {
+    return txtTgl_bayar;
+  }
+
+  public JTextField getTxtWaktu() {
+    return txtWaktu;
+  }
+  
+  public void waktu_pesan(){
+        Date tgl = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        txtWaktu.setText(df.format(tgl));
+    }
+   
+   public void tanggal_bayar(){
+        Date tgl = new Date();
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        txtTgl_bayar.setText(df.format(tgl));
+    }
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -37,27 +110,30 @@ public class inputTransaksi extends javax.swing.JDialog {
     jButton1 = new javax.swing.JButton();
     jLabel3 = new javax.swing.JLabel();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTextArea1 = new javax.swing.JTextArea();
+    txtKeterangan = new javax.swing.JTextArea();
     jLabel4 = new javax.swing.JLabel();
-    jTextField4 = new javax.swing.JTextField();
+    txtHarga = new javax.swing.JTextField();
     jLabel5 = new javax.swing.JLabel();
-    jTextField5 = new javax.swing.JTextField();
+    txtKategori = new javax.swing.JTextField();
     jButton2 = new javax.swing.JButton();
     jLabel6 = new javax.swing.JLabel();
-    jTextField6 = new javax.swing.JTextField();
+    txtProduk = new javax.swing.JTextField();
     jButton3 = new javax.swing.JButton();
     jLabel7 = new javax.swing.JLabel();
-    jTextField7 = new javax.swing.JTextField();
+    txtNo_pel = new javax.swing.JTextField();
     jLabel8 = new javax.swing.JLabel();
-    jComboBox1 = new javax.swing.JComboBox<>();
+    cbPembayaran = new javax.swing.JComboBox<>();
     jLabel9 = new javax.swing.JLabel();
-    jComboBox2 = new javax.swing.JComboBox<>();
+    cbStatus = new javax.swing.JComboBox<>();
     jLabel10 = new javax.swing.JLabel();
-    jTextField8 = new javax.swing.JTextField();
+    txtWaktu = new javax.swing.JTextField();
     jLabel11 = new javax.swing.JLabel();
-    jTextField9 = new javax.swing.JTextField();
+    txtTgl_bayar = new javax.swing.JTextField();
     jLabel12 = new javax.swing.JLabel();
-    jTextField10 = new javax.swing.JTextField();
+    txtSN_id = new javax.swing.JTextField();
+    jLabel13 = new javax.swing.JLabel();
+    txtProvider = new javax.swing.JTextField();
+    jButton4 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -76,9 +152,9 @@ public class inputTransaksi extends javax.swing.JDialog {
 
     jLabel3.setText("Keterangan");
 
-    jTextArea1.setColumns(20);
-    jTextArea1.setRows(5);
-    jScrollPane1.setViewportView(jTextArea1);
+    txtKeterangan.setColumns(20);
+    txtKeterangan.setRows(5);
+    jScrollPane1.setViewportView(txtKeterangan);
 
     jLabel4.setText("Harga");
 
@@ -104,17 +180,34 @@ public class inputTransaksi extends javax.swing.JDialog {
 
     jLabel8.setText("Pembayaran");
 
-    jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unknown", "Non-Tunai", "Tunai" }));
+    cbPembayaran.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unknown", "Non-Tunai", "Tunai" }));
+    cbPembayaran.setEnabled(false);
 
     jLabel9.setText("Status Transaksi");
 
-    jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih", "Belum Membayar", "Telah Membayar" }));
+    cbStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih", "Belum Membayar", "Telah Membayar" }));
+    cbStatus.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cbStatusActionPerformed(evt);
+      }
+    });
 
     jLabel10.setText("Waktu Pesan");
 
     jLabel11.setText("Tanggal Bayar");
 
+    txtTgl_bayar.setEnabled(false);
+
     jLabel12.setText("Kode SN/ID Voucher");
+
+    jLabel13.setText("Provider");
+
+    jButton4.setText("PROSES");
+    jButton4.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton4ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -127,7 +220,7 @@ public class inputTransaksi extends javax.swing.JDialog {
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addComponent(jLabel12)
             .addGap(25, 25, 25)
-            .addComponent(jTextField10))
+            .addComponent(txtSN_id))
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addComponent(jLabel1)
@@ -139,24 +232,29 @@ public class inputTransaksi extends javax.swing.JDialog {
               .addComponent(jLabel9)
               .addComponent(jLabel10)
               .addComponent(jLabel11)
-              .addComponent(jLabel6))
+              .addComponent(jLabel6)
+              .addComponent(jLabel13))
             .addGap(43, 43, 43)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addComponent(txtProvider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
               .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jTextField6)
+                .addComponent(txtProduk)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-              .addComponent(jTextField9)
-              .addComponent(jTextField8)
-              .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-              .addComponent(jTextField7)
-              .addComponent(jTextField4)
+              .addComponent(txtTgl_bayar)
+              .addComponent(txtWaktu)
+              .addComponent(cbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(txtNo_pel)
+              .addComponent(txtHarga)
               .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
               .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jTextField5)
+                .addComponent(txtKategori)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-              .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+              .addComponent(cbPembayaran, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
@@ -167,12 +265,17 @@ public class inputTransaksi extends javax.swing.JDialog {
         .addGap(9, 9, 9)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jButton2))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jButton4))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jButton3))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,32 +284,32 @@ public class inputTransaksi extends javax.swing.JDialog {
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtNo_pel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtWaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(cbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(cbPembayaran, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+          .addComponent(txtTgl_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+          .addComponent(txtSN_id, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addComponent(jButton1)
         .addContainerGap())
     );
@@ -243,7 +346,9 @@ public class inputTransaksi extends javax.swing.JDialog {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    c.insert(this);
+    this.dispose();
+    view.refresh();
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -254,17 +359,36 @@ public class inputTransaksi extends javax.swing.JDialog {
     // TODO add your handling code here:
   }//GEN-LAST:event_jButton3ActionPerformed
 
+  private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    // TODO add your handling code here:
+  }//GEN-LAST:event_jButton4ActionPerformed
+
+  private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed
+    if(cbStatus.getSelectedItem().equals("Telah Membayar")){
+      tanggal_bayar();
+      cbPembayaran.setEnabled(true);
+      txtTgl_bayar.setEnabled(true);
+    } else {
+      cbPembayaran.setEnabled(false);
+      txtTgl_bayar.setEnabled(false);
+      cbPembayaran.setSelectedItem("Pilih");
+      txtTgl_bayar.setText("");
+    }
+  }//GEN-LAST:event_cbStatusActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JComboBox<String> cbPembayaran;
+  private javax.swing.JComboBox<String> cbStatus;
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
   private javax.swing.JButton jButton3;
-  private javax.swing.JComboBox<String> jComboBox1;
-  private javax.swing.JComboBox<String> jComboBox2;
+  private javax.swing.JButton jButton4;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel10;
   private javax.swing.JLabel jLabel11;
   private javax.swing.JLabel jLabel12;
+  private javax.swing.JLabel jLabel13;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
@@ -275,13 +399,14 @@ public class inputTransaksi extends javax.swing.JDialog {
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTextArea jTextArea1;
-  private javax.swing.JTextField jTextField10;
-  private javax.swing.JTextField jTextField4;
-  private javax.swing.JTextField jTextField5;
-  private javax.swing.JTextField jTextField6;
-  private javax.swing.JTextField jTextField7;
-  private javax.swing.JTextField jTextField8;
-  private javax.swing.JTextField jTextField9;
+  private javax.swing.JTextField txtHarga;
+  private javax.swing.JTextField txtKategori;
+  private javax.swing.JTextArea txtKeterangan;
+  private javax.swing.JTextField txtNo_pel;
+  private javax.swing.JTextField txtProduk;
+  private javax.swing.JTextField txtProvider;
+  private javax.swing.JTextField txtSN_id;
+  private javax.swing.JTextField txtTgl_bayar;
+  private javax.swing.JTextField txtWaktu;
   // End of variables declaration//GEN-END:variables
 }

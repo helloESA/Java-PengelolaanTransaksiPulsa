@@ -42,10 +42,6 @@ public class berandaPanel extends javax.swing.JPanel {
     jLabel8 = new javax.swing.JLabel();
     jLabel9 = new javax.swing.JLabel();
     jLabel10 = new javax.swing.JLabel();
-    jPanel7 = new javax.swing.JPanel();
-    jLabel11 = new javax.swing.JLabel();
-    jLabel12 = new javax.swing.JLabel();
-    jLabel13 = new javax.swing.JLabel();
     jPanel8 = new javax.swing.JPanel();
     jLabel14 = new javax.swing.JLabel();
     jLabel15 = new javax.swing.JLabel();
@@ -59,13 +55,13 @@ public class berandaPanel extends javax.swing.JPanel {
     jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jPanel3.setBackground(new java.awt.Color(229, 241, 251));
-    jPanel3.setLayout(new java.awt.GridLayout(2, 3, 20, 20));
+    jPanel3.setLayout(new java.awt.GridLayout(2, 1, 20, 20));
 
     jPanel4.setBackground(new java.awt.Color(39, 162, 67));
 
     jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
 
-    jLabel3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+    jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(255, 255, 255));
     jLabel3.setText("Transaksi Sukses");
 
@@ -94,20 +90,20 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel4Layout.createSequentialGroup()
             .addComponent(jLabel3)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
           .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
 
     jPanel3.add(jPanel4);
 
-    jPanel5.setBackground(new java.awt.Color(39, 162, 67));
+    jPanel5.setBackground(new java.awt.Color(220, 53, 69));
 
     jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
 
-    jLabel6.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+    jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel6.setText("Transaksi Sukses");
+    jLabel6.setText("Transaksi Gagal");
 
     jLabel7.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
     jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -134,20 +130,20 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel5Layout.createSequentialGroup()
             .addComponent(jLabel6)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
           .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
 
     jPanel3.add(jPanel5);
 
-    jPanel6.setBackground(new java.awt.Color(39, 162, 67));
+    jPanel6.setBackground(new java.awt.Color(255, 193, 7));
 
     jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
 
-    jLabel9.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+    jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel9.setText("Transaksi Sukses");
+    jLabel9.setText("Belum Membayar");
 
     jLabel10.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
     jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -174,60 +170,20 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel6Layout.createSequentialGroup()
             .addComponent(jLabel9)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
           .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
 
     jPanel3.add(jPanel6);
 
-    jPanel7.setBackground(new java.awt.Color(39, 162, 67));
-
-    jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
-
-    jLabel12.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-    jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel12.setText("Transaksi Sukses");
-
-    jLabel13.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-    jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel13.setText("00000000");
-
-    javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-    jPanel7.setLayout(jPanel7Layout);
-    jPanel7Layout.setHorizontalGroup(
-      jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel7Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jLabel11)
-        .addGap(18, 18, 18)
-        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jLabel12)
-          .addComponent(jLabel13))
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-    );
-    jPanel7Layout.setVerticalGroup(
-      jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel7Layout.createSequentialGroup()
-        .addContainerGap()
-        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel7Layout.createSequentialGroup()
-            .addComponent(jLabel12)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-          .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        .addContainerGap())
-    );
-
-    jPanel3.add(jPanel7);
-
-    jPanel8.setBackground(new java.awt.Color(39, 162, 67));
+    jPanel8.setBackground(new java.awt.Color(108, 117, 125));
 
     jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
 
-    jLabel15.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+    jLabel15.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel15.setText("Transaksi Sukses");
+    jLabel15.setText("Jumlah Transaksi");
 
     jLabel16.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
     jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -254,7 +210,7 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel8Layout.createSequentialGroup()
             .addComponent(jLabel15)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
           .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
@@ -301,9 +257,6 @@ public class berandaPanel extends javax.swing.JPanel {
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel jLabel10;
-  private javax.swing.JLabel jLabel11;
-  private javax.swing.JLabel jLabel12;
-  private javax.swing.JLabel jLabel13;
   private javax.swing.JLabel jLabel14;
   private javax.swing.JLabel jLabel15;
   private javax.swing.JLabel jLabel16;
@@ -321,7 +274,6 @@ public class berandaPanel extends javax.swing.JPanel {
   private javax.swing.JPanel jPanel4;
   private javax.swing.JPanel jPanel5;
   private javax.swing.JPanel jPanel6;
-  private javax.swing.JPanel jPanel7;
   private javax.swing.JPanel jPanel8;
   // End of variables declaration//GEN-END:variables
 }

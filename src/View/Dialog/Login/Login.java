@@ -9,24 +9,25 @@ import Controller.Login.Control_userLogin;
 import View.Dialog.User.*;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import Config.Config;
 
 /**
  *
  * @author MohamadEsa
  */
-public class Login extends javax.swing.JDialog {
+public class Login extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
    */
   Control_userLogin control;
-  String namaproject = "Pengelolaan Transaksi Pulsa";
   public Login() {
     initComponents();
     this.setLocationRelativeTo(null);
-    this.setTitle(namaproject+" - Login");
+    this.setTitle(project_name+" - Login");
     this.setAlwaysOnTop(true);
     this.setResizable(false);
+    txtUname.requestFocus();
     control = new Control_userLogin(this);
   }
 
@@ -60,6 +61,7 @@ public class Login extends javax.swing.JDialog {
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
     setAlwaysOnTop(true);
+    setFocusTraversalPolicyProvider(true);
 
     jPanel1.setBackground(new java.awt.Color(99, 170, 227));
 
@@ -101,16 +103,15 @@ public class Login extends javax.swing.JDialog {
         .addGap(18, 18, 18)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
           .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
-          .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-              .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel3)
-                .addComponent(jLabel4))
-              .addGap(18, 18, 18)
-              .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
-                .addComponent(txtPass)))))
+          .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(jLabel3)
+              .addComponent(jLabel4))
+            .addGap(18, 18, 18)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(txtUname, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+              .addComponent(txtPass))))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
