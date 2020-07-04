@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Jun 2020 pada 17.19
+-- Waktu pembuatan: 04 Jul 2020 pada 04.08
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.1
 
@@ -33,6 +33,14 @@ CREATE TABLE `kategori` (
   `nama_kategori` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `kategori`
+--
+
+INSERT INTO `kategori` (`id_kategori`, `nama_kategori`) VALUES
+(1, 'Pulsa'),
+(3, 'Internet');
+
 -- --------------------------------------------------------
 
 --
@@ -47,6 +55,15 @@ CREATE TABLE `produk` (
   `harga` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `provider`, `nama_produk`, `keterangan`, `harga`) VALUES
+(1, 'Indosat', 'I5', 'Indosat Pulsa 5rb', 5670),
+(2, 'Indosat', 'I10', 'Indosat Pulsa 10rb', 10872),
+(4, 'Indosat', 'I20', 'Indosat Pulsa 20rb', 20342);
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +76,14 @@ CREATE TABLE `provider` (
   `nama_provider` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `provider`
+--
+
+INSERT INTO `provider` (`id_provider`, `kategori`, `nama_provider`) VALUES
+(1, 'Pulsa', 'Indosat'),
+(7, 'Internet', 'Indosat');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +93,7 @@ CREATE TABLE `provider` (
 CREATE TABLE `transaksi` (
   `id_transaksi` int(12) NOT NULL,
   `kategori` varchar(255) NOT NULL,
+  `provider` varchar(255) NOT NULL,
   `produk` varchar(255) NOT NULL,
   `keterangan_produk` text NOT NULL,
   `no_telepon` varchar(20) NOT NULL,
@@ -78,6 +104,13 @@ CREATE TABLE `transaksi` (
   `tanggal_bayar` varchar(255) DEFAULT NULL,
   `kode_sn` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `kategori`, `provider`, `produk`, `keterangan_produk`, `no_telepon`, `harga`, `waktu_pesan`, `status_pembayaran`, `tipe_pembayaran`, `tanggal_bayar`, `kode_sn`) VALUES
+(2, 'Pulsa', 'Indosat', 'I5', 'Indosat Pulsa 5rb', '08153567823', 7500, '2020-07-03 18:40:53', 'Telah Membayar', 'Tunai', '2020-07-03', '4356785764757755');
 
 -- --------------------------------------------------------
 
@@ -97,8 +130,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama_user`, `username`, `password`) VALUES
-(5, 'Mohamad Esa', 'helloEsa', '81dc9bdb52d04dc20036dbd8313ed055'),
-(7, 'Hadi', 'HD_Cuy', '1bbd886460827015e5d605ed44252251');
+(11, 'Mohamad Esa ', 'helloEsa', '5416d7cd6ef195a0f7622a9c56b55e84'),
+(14, 'Johanes', 'jo_akun', '1c63129ae9db9c60c3e8aa94d3e00495'),
+(15, 'Komarudin', 'k1234', '81dc9bdb52d04dc20036dbd8313ed055'),
+(16, 'Administrator', 'Admin', '21232f297a57a5a743894a0e4a801fc3');
 
 --
 -- Indexes for dumped tables
@@ -142,31 +177,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id_kategori` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kategori` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produk` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `provider`
 --
 ALTER TABLE `provider`
-  MODIFY `id_provider` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_provider` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(12) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_user` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
