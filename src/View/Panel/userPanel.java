@@ -28,7 +28,6 @@ public class userPanel extends javax.swing.JPanel {
     initComponents();
     c = new Control_userList(this);
     refresh();
-    this.jLabel2.setVisible(false);
   }
 
   public JTextField getTxtCari() {
@@ -41,6 +40,10 @@ public class userPanel extends javax.swing.JPanel {
   
   public void refresh(){
     c.isiTable();
+    
+    btnAdd.setEnabled(true);
+    btnEdit.setEnabled(false);
+    btnDelete.setEnabled(false);
   }
   
 
@@ -65,7 +68,6 @@ public class userPanel extends javax.swing.JPanel {
     jButton4 = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    jLabel2 = new javax.swing.JLabel();
 
     setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -172,24 +174,18 @@ public class userPanel extends javax.swing.JPanel {
 
     jLabel1.setText("KELOLA USER");
 
-    jLabel2.setText("ID");
-
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jLabel2)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap(709, Short.MAX_VALUE)
         .addComponent(jLabel1)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        .addComponent(jLabel2))
+      .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
     javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -224,7 +220,6 @@ public class userPanel extends javax.swing.JPanel {
   private void tabelDataUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataUserMouseClicked
     int tableData = tabelDataUser.getSelectedRow();
     ubah = new updatePengguna(this);
-    jLabel2.setText(tabelDataUser.getValueAt(tableData, 0).toString());
     
     ubah.id = tabelDataUser.getValueAt(tableData, 0).toString();
     ubah.nama = tabelDataUser.getValueAt(tableData, 1).toString();
@@ -237,11 +232,12 @@ public class userPanel extends javax.swing.JPanel {
   }//GEN-LAST:event_tabelDataUserMouseClicked
 
   private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-    
-    ubah.setVisible(true);
-    btnAdd.setEnabled(true);
-    btnDelete.setEnabled(false);
-    btnEdit.setEnabled(false);
+    if(tabelDataUser.getSelectedRow()>=0){
+      ubah.setVisible(true);
+      refresh();
+    } else{
+      JOptionPane.showMessageDialog(this, "Pilih Data yang akan Diubah","Peringatan",JOptionPane.WARNING_MESSAGE);
+    }
   }//GEN-LAST:event_btnEditActionPerformed
 
   private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -250,10 +246,7 @@ public class userPanel extends javax.swing.JPanel {
             if(dialog == JOptionPane.YES_OPTION){
                 String id = tabelDataUser.getValueAt(tabelDataUser.getSelectedRow(), 0).toString();
                 c.delete(id);
-                c.isiTable();
-                btnAdd.setEnabled(true);
-                btnDelete.setEnabled(false);
-                btnEdit.setEnabled(false);
+                refresh();
             }
         } else{
             JOptionPane.showMessageDialog(this, "Pilih Data yang akan Dihapus","Peringatan",JOptionPane.WARNING_MESSAGE);
@@ -276,7 +269,6 @@ public class userPanel extends javax.swing.JPanel {
   private javax.swing.JButton btnEdit;
   private javax.swing.JButton jButton4;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;

@@ -1,5 +1,4 @@
 
-import View.Dialog.Login.Login;
 import View.Dialog.SplashScreen;
 
 /*

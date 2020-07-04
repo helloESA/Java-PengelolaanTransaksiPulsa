@@ -3,25 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Dialog.Login;
+package View.Form;
 
+import static Config.Config.project_name;
 import Controller.Login.Control_userLogin;
-import View.Dialog.User.*;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import Config.Config;
 
 /**
  *
  * @author MohamadEsa
  */
-public class Login extends javax.swing.JDialog implements Config{
+public class LoginFrame extends javax.swing.JFrame {
 
   /**
-   * Creates new form MenuMaster
+   * Creates new form LoginFrame
    */
   Control_userLogin control;
-  public Login() {
+  
+  public LoginFrame() {
     initComponents();
     this.setLocationRelativeTo(null);
     this.setTitle(project_name+" - Login");
@@ -30,7 +30,7 @@ public class Login extends javax.swing.JDialog implements Config{
     txtUname.requestFocus();
     control = new Control_userLogin(this);
   }
-
+  
   public JPasswordField getTxtPass() {
     return txtPass;
   }
@@ -39,7 +39,6 @@ public class Login extends javax.swing.JDialog implements Config{
     return txtUname;
   }
 
-  
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,9 +58,9 @@ public class Login extends javax.swing.JDialog implements Config{
     jLabel5 = new javax.swing.JLabel();
     jButton2 = new javax.swing.JButton();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setAlwaysOnTop(true);
-    setFocusTraversalPolicyProvider(true);
+    setType(java.awt.Window.Type.UTILITY);
 
     jPanel1.setBackground(new java.awt.Color(99, 170, 227));
 
@@ -115,8 +114,8 @@ public class Login extends javax.swing.JDialog implements Config{
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
-      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-      .addGroup(jPanel2Layout.createSequentialGroup()
+      jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -166,18 +165,19 @@ public class Login extends javax.swing.JDialog implements Config{
     pack();
   }// </editor-fold>//GEN-END:initComponents
 
+  private void txtUnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnameActionPerformed
+
+  }//GEN-LAST:event_txtUnameActionPerformed
+
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     control.cek_login(this);
   }//GEN-LAST:event_jButton1ActionPerformed
-
-  private void txtUnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnameActionPerformed
-   
-  }//GEN-LAST:event_txtUnameActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
     System.exit(0);
   }//GEN-LAST:event_jButton2ActionPerformed
 
+  
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;

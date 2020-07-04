@@ -9,6 +9,7 @@ import Controller.Kategori.Control_kategoriList;
 import Controller.Provider.Control_providerList;
 import View.Dialog.Kategori.inputKategori;
 import View.Dialog.Kategori.updateKategori;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -27,12 +28,15 @@ public class kategoriPanel extends javax.swing.JPanel {
   public kategoriPanel() {
     initComponents();
     c = new Control_kategoriList(this);
-    jLabel2.setVisible(false);
     refresh();
   }
   
   public void refresh(){
     c.isiTable();
+    
+    btnAdd.setEnabled(true);
+    btnDelete.setEnabled(false);
+    btnEdit.setEnabled(false);
   }
 
   public JTable getTabelDataKategori() {
@@ -66,7 +70,6 @@ public class kategoriPanel extends javax.swing.JPanel {
     jButton4 = new javax.swing.JButton();
     jPanel2 = new javax.swing.JPanel();
     jLabel1 = new javax.swing.JLabel();
-    jLabel2 = new javax.swing.JLabel();
 
     setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -171,24 +174,18 @@ public class kategoriPanel extends javax.swing.JPanel {
 
     jLabel1.setText("KELOLA KATEGORI");
 
-    jLabel2.setText("jLabel2");
-
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jLabel2)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap(684, Short.MAX_VALUE)
         .addComponent(jLabel1)
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
-        .addComponent(jLabel2))
+      .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
     );
 
     javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -218,7 +215,6 @@ public class kategoriPanel extends javax.swing.JPanel {
   private void tabelDataKategoriMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataKategoriMouseClicked
    int tableData = tabelDataKategori.getSelectedRow();
     ubah = new updateKategori(this);
-    jLabel2.setText(tabelDataKategori.getValueAt(tableData, 0).toString());
     
     ubah.id = tabelDataKategori.getValueAt(tableData, 0).toString();
     ubah.kategori = tabelDataKategori.getValueAt(tableData, 1).toString();
@@ -230,14 +226,17 @@ public class kategoriPanel extends javax.swing.JPanel {
   }//GEN-LAST:event_tabelDataKategoriMouseClicked
 
   private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-    ubah.setVisible(true);
+    if(tabelDataKategori.getSelectedRow()>=0){
+      ubah.setVisible(true);
+      refresh();
+    } else{
+      JOptionPane.showMessageDialog(this, "Pilih Data yang akan Diubah","Peringatan",JOptionPane.WARNING_MESSAGE);
+    }
   }//GEN-LAST:event_btnEditActionPerformed
 
   private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     new inputKategori(this).setVisible(true);
-    btnAdd.setEnabled(true);
-    btnDelete.setEnabled(false);
-    btnEdit.setEnabled(false);
+    
   }//GEN-LAST:event_btnAddActionPerformed
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -245,11 +244,16 @@ public class kategoriPanel extends javax.swing.JPanel {
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-    c.delete(jLabel2.getText());
-    refresh();
-    btnAdd.setEnabled(true);
-    btnDelete.setEnabled(false);
-    btnEdit.setEnabled(false);
+    if(tabelDataKategori.getSelectedRow()>=0){
+            int dialog = JOptionPane.showConfirmDialog(this, "Yakin ingin menghapus data ini?","Konfirmasi", JOptionPane.WARNING_MESSAGE);
+            if(dialog == JOptionPane.YES_OPTION){
+                String id = tabelDataKategori.getValueAt(tabelDataKategori.getSelectedRow(), 0).toString();
+                c.delete(id);
+                refresh();
+            }
+        } else{
+            JOptionPane.showMessageDialog(this, "Pilih Data yang akan Dihapus","Peringatan",JOptionPane.WARNING_MESSAGE);
+        }
   }//GEN-LAST:event_btnDeleteActionPerformed
 
 
@@ -259,7 +263,6 @@ public class kategoriPanel extends javax.swing.JPanel {
   private javax.swing.JButton btnEdit;
   private javax.swing.JButton jButton4;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;

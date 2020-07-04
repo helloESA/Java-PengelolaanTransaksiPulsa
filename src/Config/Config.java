@@ -15,6 +15,12 @@ public interface Config {
     String driver = "com.mysql.jdbc.Driver";
     String link = "jdbc:mysql://localhost:3306/mpt_pulsa";
     
-    String versi = "1.0.4";
+    String versi = "1.0.1";
     String project_name = "Pengelolaan Transaksi Pulsa";
+    
+    String inputProduk = "Input Produk";
+    String inputKategori = "Input Produk";
+    String inputPengguna = "Input Produk";
+    String inputProvider = "Input Produk";
+    String inputTransaksi = "Input Produk";
 }

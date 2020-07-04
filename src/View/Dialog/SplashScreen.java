@@ -5,11 +5,11 @@
  */
 package View.Dialog;
 
-import View.Dialog.Login.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import Config.Config;
+import View.Form.LoginFrame;
 
 /**
  *
@@ -44,7 +44,7 @@ public class SplashScreen extends javax.swing.JDialog implements Config{
         if(progressBar.getPercentComplete() == 1.0){
           timer.stop();
           dispose();
-          new Login().setVisible(true);
+          new LoginFrame().setVisible(true);
         }
       }
     };

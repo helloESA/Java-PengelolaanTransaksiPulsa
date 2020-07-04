@@ -9,7 +9,7 @@ import DAO.DAO_User;
 import DAOImplements.Implement_User;
 import Model.User;
 import Model.UserSession;
-import View.Dialog.Login.Login;
+import View.Form.LoginFrame;
 import View.Form.Dashboard;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -19,18 +19,18 @@ import javax.swing.JOptionPane;
  * @author MohamadEsa
  */
 public class Control_userLogin {
-  Login form;
+  LoginFrame form;
   Dashboard db;
   DAO_User impl;
   List<User> li;
 
-  public Control_userLogin(Login form) {
+  public Control_userLogin(LoginFrame form) {
     this.form = form;
     db = new Dashboard();
     impl = new Implement_User();
   }
   
-  public void cek_login (Login data){
+  public void cek_login (LoginFrame data){
            
     String nama = data.getTxtUname().getText();
     String pass = data.getTxtPass().getText();

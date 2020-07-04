@@ -5,9 +5,7 @@
  */
 package View.Form;
 
-import Model.User;
 import Model.UserSession;
-import View.Dialog.Login.Login;
 import View.Dialog.muatGambar;
 import View.Panel.berandaPanel;
 import View.Panel.kategoriPanel;
@@ -24,6 +22,8 @@ import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import Config.Config;
+import View.Panel.laporanPanel;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -37,7 +37,7 @@ public class Dashboard extends javax.swing.JFrame implements Config{
   
     private final berandaPanel panel2 = new berandaPanel();
     private final transaksiPanel panel3 = new transaksiPanel();
-    
+    private final laporanPanel panel7 = new laporanPanel();
     private final userPanel panel1 = new userPanel();
     private final kategoriPanel panel4 = new kategoriPanel();
     private final produkPanel panel5 = new produkPanel();
@@ -51,7 +51,9 @@ public class Dashboard extends javax.swing.JFrame implements Config{
         this.setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
         prepare();
-        
+        System.out.println("Session : "+UserSession.getNama());
+        ImageIcon icon = new ImageIcon(Dashboard.class.getResource("/Assets/logo_icon.png"));
+        setIconImage(icon.getImage());
     }
 
     public final void tampilkanJam(){
@@ -103,6 +105,7 @@ public class Dashboard extends javax.swing.JFrame implements Config{
         panelBody.add(panel4, "kategori");
         panelBody.add(panel5, "produk");
         panelBody.add(panel6, "provider");
+        panelBody.add(panel7, "laporan");
         
         CardLayout cl = (CardLayout) panelBody.getLayout();
         cl.show(panelBody, "beranda");
@@ -130,8 +133,10 @@ public class Dashboard extends javax.swing.JFrame implements Config{
     labelTransaksi = new javax.swing.JLabel();
     btnLaporan = new javax.swing.JPanel();
     labelLaporan = new javax.swing.JLabel();
-    btnLaporan1 = new javax.swing.JPanel();
-    labelLaporan1 = new javax.swing.JLabel();
+    btnTentang = new javax.swing.JPanel();
+    labelTentang = new javax.swing.JLabel();
+    btnLogout = new javax.swing.JPanel();
+    labelLagout = new javax.swing.JLabel();
     jScrollPane1 = new javax.swing.JScrollPane();
     panelBody = new javax.swing.JPanel();
     jPanel6 = new javax.swing.JPanel();
@@ -195,7 +200,7 @@ public class Dashboard extends javax.swing.JFrame implements Config{
     jScrollPane2.setBorder(null);
 
     menus.setBackground(new java.awt.Color(0, 0, 0));
-    menus.setLayout(new java.awt.GridLayout(5, 0, 0, 2));
+    menus.setLayout(new java.awt.GridLayout(6, 0, 0, 2));
 
     btnBeranda.setBackground(new java.awt.Color(229, 241, 251));
     btnBeranda.setPreferredSize(new java.awt.Dimension(164, 15));
@@ -349,43 +354,81 @@ public class Dashboard extends javax.swing.JFrame implements Config{
 
     menus.add(btnLaporan);
 
-    btnLaporan1.setBackground(new java.awt.Color(229, 241, 251));
-    btnLaporan1.setPreferredSize(new java.awt.Dimension(164, 15));
+    btnTentang.setBackground(new java.awt.Color(229, 241, 251));
+    btnTentang.setPreferredSize(new java.awt.Dimension(164, 15));
 
-    labelLaporan1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-    labelLaporan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/exit.png"))); // NOI18N
-    labelLaporan1.setText("LOGOUT");
-    labelLaporan1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    labelLaporan1.addMouseListener(new java.awt.event.MouseAdapter() {
+    labelTentang.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    labelTentang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/about.png"))); // NOI18N
+    labelTentang.setText("TENTANG");
+    labelTentang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    labelTentang.addMouseListener(new java.awt.event.MouseAdapter() {
       public void mouseClicked(java.awt.event.MouseEvent evt) {
-        labelLaporan1MouseClicked(evt);
+        labelTentangMouseClicked(evt);
       }
       public void mouseEntered(java.awt.event.MouseEvent evt) {
-        labelLaporan1MouseEntered(evt);
+        labelTentangMouseEntered(evt);
       }
       public void mouseExited(java.awt.event.MouseEvent evt) {
-        labelLaporan1MouseExited(evt);
+        labelTentangMouseExited(evt);
       }
     });
 
-    javax.swing.GroupLayout btnLaporan1Layout = new javax.swing.GroupLayout(btnLaporan1);
-    btnLaporan1.setLayout(btnLaporan1Layout);
-    btnLaporan1Layout.setHorizontalGroup(
-      btnLaporan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(btnLaporan1Layout.createSequentialGroup()
+    javax.swing.GroupLayout btnTentangLayout = new javax.swing.GroupLayout(btnTentang);
+    btnTentang.setLayout(btnTentangLayout);
+    btnTentangLayout.setHorizontalGroup(
+      btnTentangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(btnTentangLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(labelLaporan1, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+        .addComponent(labelTentang, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
         .addContainerGap())
     );
-    btnLaporan1Layout.setVerticalGroup(
-      btnLaporan1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(btnLaporan1Layout.createSequentialGroup()
+    btnTentangLayout.setVerticalGroup(
+      btnTentangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(btnTentangLayout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(labelLaporan1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addComponent(labelTentang, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
         .addContainerGap())
     );
 
-    menus.add(btnLaporan1);
+    menus.add(btnTentang);
+
+    btnLogout.setBackground(new java.awt.Color(229, 241, 251));
+    btnLogout.setPreferredSize(new java.awt.Dimension(164, 15));
+
+    labelLagout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+    labelLagout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/exit.png"))); // NOI18N
+    labelLagout.setText("LOGOUT");
+    labelLagout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    labelLagout.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        labelLagoutMouseClicked(evt);
+      }
+      public void mouseEntered(java.awt.event.MouseEvent evt) {
+        labelLagoutMouseEntered(evt);
+      }
+      public void mouseExited(java.awt.event.MouseEvent evt) {
+        labelLagoutMouseExited(evt);
+      }
+    });
+
+    javax.swing.GroupLayout btnLogoutLayout = new javax.swing.GroupLayout(btnLogout);
+    btnLogout.setLayout(btnLogoutLayout);
+    btnLogoutLayout.setHorizontalGroup(
+      btnLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(btnLogoutLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(labelLagout, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+        .addContainerGap())
+    );
+    btnLogoutLayout.setVerticalGroup(
+      btnLogoutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+      .addGroup(btnLogoutLayout.createSequentialGroup()
+        .addContainerGap()
+        .addComponent(labelLagout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap())
+    );
+
+    menus.add(btnLogout);
 
     jScrollPane2.setViewportView(menus);
 
@@ -611,6 +654,8 @@ public class Dashboard extends javax.swing.JFrame implements Config{
 
   private void labelLaporanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporanMouseClicked
     btnLaporan.setBackground(new Color(178, 190, 200));
+    CardLayout c2 = (CardLayout) panelBody.getLayout();
+    c2.show(panelBody, "laporan");
   }//GEN-LAST:event_labelLaporanMouseClicked
 
   private void labelLaporanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporanMouseEntered
@@ -641,34 +686,48 @@ public class Dashboard extends javax.swing.JFrame implements Config{
     c2.show(panelBody, "produk");
   }//GEN-LAST:event_jButton4ActionPerformed
 
-  private void labelLaporan1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseClicked
-    btnLaporan1.setBackground(new Color(178, 190, 200));
+  private void labelLagoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLagoutMouseClicked
+    btnLogout.setBackground(new Color(178, 190, 200));
     int ok = JOptionPane.showConfirmDialog(null, "Yakin Ingin Keluar Akun?","Konfirmasi",JOptionPane.YES_NO_OPTION);
         if (ok==0){
             UserSession.setId(null);
             UserSession.setNama(null);
             UserSession.setUsername(null);
             UserSession.setPassword(null);
-            new Login().show();
+            new LoginFrame().show();
             this.dispose();
         }
-  }//GEN-LAST:event_labelLaporan1MouseClicked
+  }//GEN-LAST:event_labelLagoutMouseClicked
 
-  private void labelLaporan1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseEntered
-    btnLaporan1.setBackground(new Color(204, 216, 226));
-  }//GEN-LAST:event_labelLaporan1MouseEntered
+  private void labelLagoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLagoutMouseEntered
+    btnLogout.setBackground(new Color(204, 216, 226));
+  }//GEN-LAST:event_labelLagoutMouseEntered
 
-  private void labelLaporan1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLaporan1MouseExited
-    btnLaporan1.setBackground(new Color(229, 241, 251));
-  }//GEN-LAST:event_labelLaporan1MouseExited
+  private void labelLagoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLagoutMouseExited
+    btnLogout.setBackground(new Color(229, 241, 251));
+  }//GEN-LAST:event_labelLagoutMouseExited
+
+  private void labelTentangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTentangMouseClicked
+    btnTentang.setBackground(new Color(178, 190, 200));
+    new About().setVisible(true);
+  }//GEN-LAST:event_labelTentangMouseClicked
+
+  private void labelTentangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTentangMouseEntered
+    btnTentang.setBackground(new Color(204, 216, 226));
+  }//GEN-LAST:event_labelTentangMouseEntered
+
+  private void labelTentangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelTentangMouseExited
+    btnTentang.setBackground(new Color(229, 241, 251));
+  }//GEN-LAST:event_labelTentangMouseExited
 
    
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JPanel btnBeranda;
   private javax.swing.JPanel btnLaporan;
-  private javax.swing.JPanel btnLaporan1;
+  private javax.swing.JPanel btnLogout;
   private javax.swing.JPanel btnMaster;
+  private javax.swing.JPanel btnTentang;
   private javax.swing.JPanel btnTransaksi;
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
@@ -687,9 +746,10 @@ public class Dashboard extends javax.swing.JFrame implements Config{
   private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JLabel labelBeranda;
   private javax.swing.JLabel labelJam;
+  private javax.swing.JLabel labelLagout;
   private javax.swing.JLabel labelLaporan;
-  private javax.swing.JLabel labelLaporan1;
   private javax.swing.JLabel labelMaster;
+  private javax.swing.JLabel labelTentang;
   private javax.swing.JLabel labelTransaksi;
   private javax.swing.JPanel menus;
   private javax.swing.JPanel panelBody;
