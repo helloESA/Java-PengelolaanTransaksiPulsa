@@ -5,6 +5,7 @@
  */
 package View.Dialog.User;
 
+import Config.Config;
 import Controller.User.Control_userAdd;
 import View.Panel.userPanel;
 import javax.swing.JOptionPane;
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class inputPengguna extends javax.swing.JDialog {
+public class inputPengguna extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
@@ -25,6 +26,8 @@ public class inputPengguna extends javax.swing.JDialog {
   
   public inputPengguna(userPanel v) {
     initComponents();
+    this.setTitle(inputPengguna);
+//    this.setAlwaysOnTop(true);
     this.v = v;
     c = new Control_userAdd(this);
     this.setLocationRelativeTo(v);

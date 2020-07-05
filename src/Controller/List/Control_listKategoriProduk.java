@@ -15,20 +15,21 @@ import Model.Provider;
 import TableModel.TM_Kategori;
 import TableModel.TM_Provider;
 import View.List.listKategori;
+import View.List.listKategoriProduk;
 import java.util.List;
 
 /**
  *
  * @author MohamadEsa
  */
-public class Control_listKategori {
-  listKategori v;
+public class Control_listKategoriProduk {
+  listKategoriProduk v;
   DAO_Kategori impl;
   DAO_Transaksi impl2;
   List<Kategori> li;
   List<Provider> li2;
   
-  public Control_listKategori(listKategori v){
+  public Control_listKategoriProduk(listKategoriProduk v){
     this.v=v;
     impl = new Implement_Kategori();
     impl2 = new Implement_Transaksi();
@@ -48,7 +49,7 @@ public class Control_listKategori {
         v.getTabelListKategori().setModel(table);
     }
     
-    public void search(listKategori data){
+    public void search(listKategoriProduk data){
         if(!data.getTxtCari().getText().isEmpty()){
             impl.getSearch(v.getTxtCari().getText());
             isiTableCari();
@@ -57,20 +58,5 @@ public class Control_listKategori {
         }
     }
     
-    public void isiTableFromKategori(String data){
-     
-//     System.out.println("Cek "+data);
-        li2 = impl2.getSearchFromKategori(data);
-        TM_Provider table = new TM_Provider(li2);
-        v.getTabelListKategori().setModel(table);
-    }
     
-    public void search2(listKategori data, String get){
-        if(!data.getTxtCari().getText().isEmpty()){
-            impl.getSearch(v.getTxtCari().getText());
-            isiTableFromKategori(get);
-        } else{
-            isiTable();
-        }
-    }
 }

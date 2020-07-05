@@ -6,7 +6,6 @@
 package View.Panel;
 
 import Controller.Kategori.Control_kategoriList;
-import Controller.Provider.Control_providerList;
 import View.Dialog.Kategori.inputKategori;
 import View.Dialog.Kategori.updateKategori;
 import javax.swing.JOptionPane;
@@ -240,7 +239,11 @@ public class kategoriPanel extends javax.swing.JPanel {
   }//GEN-LAST:event_btnAddActionPerformed
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    c.search(this);
+    if(txtCari.getText().trim().isEmpty()){
+      JOptionPane.showMessageDialog(null, "Pencarian Belum Ditentukan","Perhatian",JOptionPane.WARNING_MESSAGE);
+    } else{
+      c.search(this);
+    }
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed

@@ -10,7 +10,7 @@ package Model;
  * @author MohamadEsa
  */
 public class Produk {
-  String id, provider, nama_produk, keterangan, harga;
+  String id, kategori, provider, nama_produk, keterangan, harga;
 
   public String getId() {
     return id;
@@ -18,6 +18,14 @@ public class Produk {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+  public String getKategori() {
+    return kategori;
+  }
+
+  public void setKategori(String kategori) {
+    this.kategori = kategori;
   }
 
   public String getProvider() {

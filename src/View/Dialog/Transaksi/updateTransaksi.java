@@ -5,10 +5,8 @@
  */
 package View.Dialog.Transaksi;
 
+import Config.Config;
 import Controller.Transaksi.Control_transaksiUpdate;
-import View.Dialog.Produk.*;
-import View.Dialog.Provider.*;
-import View.Dialog.Kategori.*;
 import View.Panel.transaksiPanel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,7 +20,7 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class updateTransaksi extends javax.swing.JDialog {
+public class updateTransaksi extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
@@ -33,6 +31,8 @@ public class updateTransaksi extends javax.swing.JDialog {
   
   public updateTransaksi(transaksiPanel view) {
     initComponents();
+    this.setTitle(updateTransaksi);
+//    this.setAlwaysOnTop(true);
     c = new Control_transaksiUpdate(this);
     txtID.setVisible(false);
     this.view=view;

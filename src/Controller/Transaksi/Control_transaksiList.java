@@ -43,7 +43,7 @@ public class Control_transaksiList {
         v.getTabelDataTransaksi().setModel(table);
     }
     
-    public void search(providerPanel data){
+    public void search(transaksiPanel data){
         if(!data.getTxtCari().getText().isEmpty()){
             impl.getSearch(v.getTxtCari().getText());
             isiTableCari();

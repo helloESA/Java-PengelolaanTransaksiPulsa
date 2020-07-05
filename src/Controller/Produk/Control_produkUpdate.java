@@ -37,6 +37,7 @@ public class Control_produkUpdate {
   public void update(updateProduk d){
     Produk m = new Produk();
     m.setId(d.getTxtID().getText());
+    m.setKategori(d.getTxtKategori().getText());
     m.setProvider(d.getTxtProvider().getText());
     m.setNama_produk(d.getTxtNama().getText());
     m.setKeterangan(d.getTxtKeterangan().getText());

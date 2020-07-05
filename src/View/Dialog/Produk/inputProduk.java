@@ -5,8 +5,10 @@
  */
 package View.Dialog.Produk;
 
+import Config.Config;
 import Controller.Produk.Control_produkAdd;
-import View.List.listProvider;
+import View.List.listKategoriProduk;
+import View.List.listProviderProduk;
 import View.Panel.produkPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -15,7 +17,7 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class inputProduk extends javax.swing.JDialog {
+public class inputProduk extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
@@ -26,11 +28,18 @@ public class inputProduk extends javax.swing.JDialog {
   public inputProduk(produkPanel view) {
     initComponents();
     this.setLocationRelativeTo(view);
+    this.setTitle(inputProduk);
+//    this.setAlwaysOnTop(true);
     this.view=view;
     jLabel1.setVisible(false);
     c = new Control_produkAdd(this);
   }
 
+  public JTextField getTxtKategori() {
+    return txtProvider1;
+  }
+
+  
   public JTextField getTxtHarga() {
     return txtHarga;
   }
@@ -72,6 +81,9 @@ public class inputProduk extends javax.swing.JDialog {
     jLabel5 = new javax.swing.JLabel();
     txtProvider = new javax.swing.JTextField();
     jButton2 = new javax.swing.JButton();
+    jLabel6 = new javax.swing.JLabel();
+    txtProvider1 = new javax.swing.JTextField();
+    jButton3 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -109,6 +121,17 @@ public class inputProduk extends javax.swing.JDialog {
       }
     });
 
+    jLabel6.setText("Kategori");
+
+    txtProvider1.setEditable(false);
+
+    jButton3.setText("PROSES");
+    jButton3.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton3ActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -124,15 +147,23 @@ public class inputProduk extends javax.swing.JDialog {
               .addComponent(jLabel3)
               .addComponent(jLabel4)
               .addComponent(jLabel5))
-            .addGap(18, 18, Short.MAX_VALUE)
+            .addGap(18, 18, 18)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(txtHarga)
-              .addComponent(txtNama)
-              .addComponent(jScrollPane1)
               .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+              .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING)
+              .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+              .addComponent(txtHarga, javax.swing.GroupLayout.Alignment.TRAILING)))
+          .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addComponent(jLabel6)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+              .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(txtProvider1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
@@ -140,7 +171,12 @@ public class inputProduk extends javax.swing.JDialog {
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
         .addComponent(jLabel1)
-        .addGap(9, 9, 9)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(txtProvider1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jButton3))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
           .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(txtProvider, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,18 +237,24 @@ public class inputProduk extends javax.swing.JDialog {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    new listProvider(this, new updateProduk(view)).setVisible(true);
+    new listProviderProduk(this).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
+
+  private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    new listKategoriProduk(this).setVisible(true);
+  }//GEN-LAST:event_jButton3ActionPerformed
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
   private javax.swing.JButton jButton2;
+  private javax.swing.JButton jButton3;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
+  private javax.swing.JLabel jLabel6;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
   private javax.swing.JScrollPane jScrollPane1;
@@ -220,5 +262,6 @@ public class inputProduk extends javax.swing.JDialog {
   private javax.swing.JTextArea txtKeterangan;
   private javax.swing.JTextField txtNama;
   private javax.swing.JTextField txtProvider;
+  private javax.swing.JTextField txtProvider1;
   // End of variables declaration//GEN-END:variables
 }

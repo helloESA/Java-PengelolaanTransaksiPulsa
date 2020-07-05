@@ -3,41 +3,49 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Dialog.Kategori;
+package View.List;
 
 import Config.Config;
-import Controller.Kategori.Control_kategoriAdd;
-import View.Panel.kategoriPanel;
-import javax.swing.JOptionPane;
+import Controller.List.Control_listProdukTransaksi;
+import View.Dialog.Transaksi.inputTransaksi;
+import View.Panel.transaksiPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
  *
  * @author MohamadEsa
  */
-public class inputKategori extends javax.swing.JDialog implements Config{
+public class listProdukTransaksi extends javax.swing.JDialog implements Config{
 
   /**
-   * Creates new form MenuMaster
+   * Creates new form listKategori
    */
-  Control_kategoriAdd c;
-  kategoriPanel form;
+  inputTransaksi view;
+  transaksiPanel view1;
+  Control_listProdukTransaksi c;
   
-  public inputKategori(kategoriPanel form) {
+  public listProdukTransaksi(inputTransaksi view){
     initComponents();
-    c = new Control_kategoriAdd(this);
-    this.setTitle(inputKategori);
-//    this.setAlwaysOnTop(true);
-    this.setLocationRelativeTo(form);
-    this.form=form;
-    jLabel1.setVisible(false);
+    this.setTitle(listProduk);
+    this.setAlwaysOnTop(true);
+    this.view=view;
+    this.setLocationRelativeTo(view);
+    c = new Control_listProdukTransaksi(this);
+    c.isiTableFromProvider(view.getTxtProvider().getText(), view.getTxtKategori().getText());
+    
   }
 
-  public JTextField getTxtKategori() {
-    return txtKategori;
+  public JTable getTabelListProduk() {
+    return tabelListProduk;
   }
 
+  public JTextField getTxtCari() {
+    return txtCari;
+  }
   
+  
+
   /**
    * This method is called from within the constructor to initialize the form.
    * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,10 +57,10 @@ public class inputKategori extends javax.swing.JDialog implements Config{
 
     jPanel1 = new javax.swing.JPanel();
     jPanel2 = new javax.swing.JPanel();
+    txtCari = new javax.swing.JTextField();
+    jScrollPane3 = new javax.swing.JScrollPane();
+    tabelListProduk = new javax.swing.JTable();
     jLabel1 = new javax.swing.JLabel();
-    jLabel2 = new javax.swing.JLabel();
-    txtKategori = new javax.swing.JTextField();
-    jButton1 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,16 +68,31 @@ public class inputKategori extends javax.swing.JDialog implements Config{
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
 
-    jLabel1.setText("ID");
-
-    jLabel2.setText("Kategori");
-
-    jButton1.setText("PROSES");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
+    txtCari.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtCariKeyPressed(evt);
       }
     });
+
+    tabelListProduk.setModel(new javax.swing.table.DefaultTableModel(
+      new Object [][] {
+        {null, null, null, null},
+        {null, null, null, null},
+        {null, null, null, null},
+        {null, null, null, null}
+      },
+      new String [] {
+        "Title 1", "Title 2", "Title 3", "Title 4"
+      }
+    ));
+    tabelListProduk.addMouseListener(new java.awt.event.MouseAdapter() {
+      public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tabelListProdukMouseClicked(evt);
+      }
+    });
+    jScrollPane3.setViewportView(tabelListProduk);
+
+    jLabel1.setText("Cari");
 
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
@@ -78,28 +101,23 @@ public class inputKategori extends javax.swing.JDialog implements Config{
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+          .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
           .addGroup(jPanel2Layout.createSequentialGroup()
             .addComponent(jLabel1)
-            .addGap(0, 0, Short.MAX_VALUE))
-          .addGroup(jPanel2Layout.createSequentialGroup()
-            .addComponent(jLabel2)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-            .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGap(18, 18, 18)
+            .addComponent(txtCari)))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
       jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel2Layout.createSequentialGroup()
         .addContainerGap()
-        .addComponent(jLabel1)
-        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-          .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addGap(24, 24, 24)
-        .addComponent(jButton1)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+          .addComponent(jLabel1))
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+        .addContainerGap())
     );
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -113,7 +131,7 @@ public class inputKategori extends javax.swing.JDialog implements Config{
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(jPanel1Layout.createSequentialGroup()
+      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
         .addContainerGap()
         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addContainerGap())
@@ -123,7 +141,7 @@ public class inputKategori extends javax.swing.JDialog implements Config{
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+      .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,26 +149,31 @@ public class inputKategori extends javax.swing.JDialog implements Config{
     );
 
     pack();
-    setLocationRelativeTo(null);
   }// </editor-fold>//GEN-END:initComponents
 
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-   if(txtKategori.getText().trim().isEmpty()){
-     JOptionPane.showMessageDialog(null, "Pastikan kolom 'kategori' terisi", "Perhatian", JOptionPane.WARNING_MESSAGE);
-   } else{
-     c.insert(this);
-     this.dispose();
-     form.refresh();
-   }
-  }//GEN-LAST:event_jButton1ActionPerformed
+  private void tabelListProdukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelListProdukMouseClicked
+    view.getTxtProduk().setText((String) tabelListProduk.getValueAt(tabelListProduk.getSelectedRow(), 3));
+    view.getTxtKeterangan().setText((String) tabelListProduk.getValueAt(tabelListProduk.getSelectedRow(), 4));
+    view.getTxtHarga().setText((String) tabelListProduk.getValueAt(tabelListProduk.getSelectedRow(), 5));
+    
+    this.dispose();
+  }//GEN-LAST:event_tabelListProdukMouseClicked
 
+  private void txtCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyPressed
+    c.search(this, view.getTxtProvider().getText(), view.getTxtKategori().getText());
+  }//GEN-LAST:event_txtCariKeyPressed
+
+  /**
+   * @param args the command line arguments
+   */
+  
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JPanel jPanel2;
-  private javax.swing.JTextField txtKategori;
+  private javax.swing.JScrollPane jScrollPane3;
+  private javax.swing.JTable tabelListProduk;
+  private javax.swing.JTextField txtCari;
   // End of variables declaration//GEN-END:variables
 }

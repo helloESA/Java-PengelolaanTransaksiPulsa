@@ -19,8 +19,18 @@ public interface Config {
     String project_name = "Pengelolaan Transaksi Pulsa";
     
     String inputProduk = "Input Produk";
-    String inputKategori = "Input Produk";
-    String inputPengguna = "Input Produk";
-    String inputProvider = "Input Produk";
+    String inputKategori = "Input Kategori";
+    String inputPengguna = "Input Pengguna";
+    String inputProvider = "Input Provider";
     String inputTransaksi = "Input Produk";
+    
+    String updateProduk = "Update Data Produk";
+    String updateKategori = "Update Data Kategori";
+    String updatePengguna = "Update Data Pengguna";
+    String updateProvider = "Update Data Provider";
+    String updateTransaksi = "Update Data Produk";
+    
+    String listProduk = "Cari Data Produk";
+    String listKategori = "Cari Data Kategori";
+    String listProvider = "Cari Data Provider";
 }

@@ -5,26 +5,31 @@
  */
 package View.Dialog.Provider;
 
+import Config.Config;
 import Controller.Provider.Control_providerAdd;
-import View.Dialog.Kategori.*;
+import View.Dialog.Transaksi.inputTransaksi;
 import View.List.listKategori;
 import View.Panel.providerPanel;
+import View.Panel.transaksiPanel;
 import javax.swing.JTextField;
 
 /**
  *
  * @author MohamadEsa
  */
-public class inputProvider extends javax.swing.JDialog {
+public class inputProvider extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
    */
   providerPanel view;
+  transaksiPanel view2;
   Control_providerAdd c;
   
   public inputProvider(providerPanel view) {
     initComponents();
+    this.setTitle(inputProvider);
+//    this.setAlwaysOnTop(true);
     c = new Control_providerAdd(this);
     this.view=view;
     jLabel1.setVisible(false);
@@ -167,7 +172,7 @@ public class inputProvider extends javax.swing.JDialog {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    new listKategori(this, new updateProvider(view)).setVisible(true);
+    new listKategori(this, new inputTransaksi(view2)).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
 

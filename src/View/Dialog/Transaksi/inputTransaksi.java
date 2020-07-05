@@ -5,10 +5,14 @@
  */
 package View.Dialog.Transaksi;
 
+import Config.Config;
 import Controller.Transaksi.Control_transaksiAdd;
-import View.Dialog.Produk.*;
 import View.Dialog.Provider.*;
-import View.Dialog.Kategori.*;
+import View.List.listKategori;
+import View.List.listProdukTransaksi;
+import View.List.listProviderTransaksi;
+import View.Panel.produkPanel;
+import View.Panel.providerPanel;
 import View.Panel.transaksiPanel;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,16 +25,20 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class inputTransaksi extends javax.swing.JDialog {
+public class inputTransaksi extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
    */
   transaksiPanel view;
+  produkPanel view5;
+  providerPanel view2;
   Control_transaksiAdd c;
   
   public inputTransaksi(transaksiPanel view) {
     initComponents();
+    this.setTitle(inputTransaksi);
+//    this.setAlwaysOnTop(true);
     c = new Control_transaksiAdd(this);
     this.view=view;
     this.setLocationRelativeTo(view);
@@ -152,13 +160,18 @@ public class inputTransaksi extends javax.swing.JDialog {
 
     jLabel3.setText("Keterangan");
 
+    txtKeterangan.setEditable(false);
     txtKeterangan.setColumns(20);
     txtKeterangan.setRows(5);
     jScrollPane1.setViewportView(txtKeterangan);
 
     jLabel4.setText("Harga");
 
+    txtHarga.setEditable(false);
+
     jLabel5.setText("Kategori");
+
+    txtKategori.setEditable(false);
 
     jButton2.setText("PROSES");
     jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -168,6 +181,8 @@ public class inputTransaksi extends javax.swing.JDialog {
     });
 
     jLabel6.setText("Produk");
+
+    txtProduk.setEditable(false);
 
     jButton3.setText("PROSES");
     jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -201,6 +216,8 @@ public class inputTransaksi extends javax.swing.JDialog {
     jLabel12.setText("Kode SN/ID Voucher");
 
     jLabel13.setText("Provider");
+
+    txtProvider.setEditable(false);
 
     jButton4.setText("PROSES");
     jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -352,15 +369,15 @@ public class inputTransaksi extends javax.swing.JDialog {
   }//GEN-LAST:event_jButton1ActionPerformed
 
   private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    // TODO add your handling code here:
+    new listKategori(new inputProvider(view2), this).setVisible(true);
   }//GEN-LAST:event_jButton2ActionPerformed
 
   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    // TODO add your handling code here:
+    new listProdukTransaksi(this).setVisible(true);
   }//GEN-LAST:event_jButton3ActionPerformed
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    // TODO add your handling code here:
+    new listProviderTransaksi(this).setVisible(true);
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void cbStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbStatusActionPerformed

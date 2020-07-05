@@ -31,6 +31,7 @@ public class Control_produkAdd {
   
   public void insert(inputProduk d){
     Produk m = new Produk();
+    m.setKategori(d.getTxtKategori().getText());
     m.setProvider(d.getTxtProvider().getText());
     m.setNama_produk(d.getTxtNama().getText());
     m.setKeterangan(d.getTxtKeterangan().getText());

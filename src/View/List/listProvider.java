@@ -5,6 +5,7 @@
  */
 package View.List;
 
+import Config.Config;
 import Controller.List.Control_listProvider;
 import View.Dialog.Produk.inputProduk;
 import View.Dialog.Produk.updateProduk;
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class listProvider extends javax.swing.JDialog {
+public class listProvider extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form listKategori
@@ -26,6 +27,8 @@ public class listProvider extends javax.swing.JDialog {
   
   public listProvider(inputProduk view, updateProduk view2){
     initComponents();
+    this.setTitle(listProvider);
+    this.setAlwaysOnTop(true);
     this.view=view;
     this.view2=view2;
     this.setLocationRelativeTo(view2);
@@ -33,6 +36,8 @@ public class listProvider extends javax.swing.JDialog {
     c.isiTable();
   }
 
+  
+  
   public JTable getTabelListProvider() {
     return tabelListProvider;
   }
@@ -63,6 +68,12 @@ public class listProvider extends javax.swing.JDialog {
     jPanel1.setBackground(new java.awt.Color(99, 170, 227));
 
     jPanel2.setBackground(new java.awt.Color(229, 241, 251));
+
+    txtCari.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtCariKeyPressed(evt);
+      }
+    });
 
     tabelListProvider.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
@@ -146,6 +157,10 @@ public class listProvider extends javax.swing.JDialog {
     view2.getTxtProvider().setText((String) tabelListProvider.getValueAt(tabelListProvider.getSelectedRow(), 2));
     this.dispose();
   }//GEN-LAST:event_tabelListProviderMouseClicked
+
+  private void txtCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCariKeyPressed
+    c.search(this);
+  }//GEN-LAST:event_txtCariKeyPressed
 
   /**
    * @param args the command line arguments

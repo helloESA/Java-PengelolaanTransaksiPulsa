@@ -19,6 +19,7 @@ public class About extends javax.swing.JFrame implements Config{
   public About() {
     initComponents();
     this.setLocationRelativeTo(this);
+    this.setAlwaysOnTop(true);
     jLabel2.setText(project_name+" - "+versi);
   }
 

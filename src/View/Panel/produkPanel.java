@@ -6,11 +6,8 @@
 package View.Panel;
 
 import Controller.Produk.Control_produkList;
-import Controller.Provider.Control_providerList;
-import View.Dialog.Kategori.updateKategori;
 import View.Dialog.Produk.inputProduk;
 import View.Dialog.Produk.updateProduk;
-import View.Dialog.User.inputPengguna;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -215,7 +212,11 @@ public class produkPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    c.search(this);
+    if(txtCari.getText().trim().isEmpty()){
+      JOptionPane.showMessageDialog(null, "Pencarian Belum Ditentukan","Perhatian",JOptionPane.WARNING_MESSAGE);
+    } else{
+      c.search(this);
+    }
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -228,10 +229,11 @@ public class produkPanel extends javax.swing.JPanel {
     ubah = new updateProduk(this);
     
     ubah.id = tabelDataProduk.getValueAt(tableData, 0).toString();
-    ubah.provider = tabelDataProduk.getValueAt(tableData, 1).toString();
-    ubah.nama = tabelDataProduk.getValueAt(tableData, 2).toString();
-    ubah.keterangan = tabelDataProduk.getValueAt(tableData, 3).toString();
-    ubah.harga = tabelDataProduk.getValueAt(tableData, 4).toString();
+    ubah.kategori = tabelDataProduk.getValueAt(tableData, 1).toString();
+    ubah.provider = tabelDataProduk.getValueAt(tableData, 2).toString();
+    ubah.nama = tabelDataProduk.getValueAt(tableData, 3).toString();
+    ubah.keterangan = tabelDataProduk.getValueAt(tableData, 5).toString();
+    ubah.harga = tabelDataProduk.getValueAt(tableData, 6).toString();
     ubah.dipilih();
     
     btnAdd.setEnabled(false);

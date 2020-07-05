@@ -5,10 +5,10 @@
  */
 package View.Dialog.Provider;
 
+import Config.Config;
 import Controller.Provider.Control_providerUpdate;
-import View.Dialog.Kategori.*;
-import View.List.listKategori;
 import View.Panel.providerPanel;
+import View.Panel.transaksiPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -16,17 +16,20 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class updateProvider extends javax.swing.JDialog {
+public class updateProvider extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
    */
   providerPanel view;
+  transaksiPanel view2;
   public String id, kategori, nama;
   Control_providerUpdate c;
   
   public updateProvider(providerPanel view) {
     initComponents();
+    this.setTitle(updateProvider);
+//    this.setAlwaysOnTop(true);
     c = new Control_providerUpdate(this);
     this.view=view;
     this.setLocationRelativeTo(view);
@@ -71,7 +74,6 @@ public class updateProvider extends javax.swing.JDialog {
     jLabel3 = new javax.swing.JLabel();
     txtNama = new javax.swing.JTextField();
     txtKategori = new javax.swing.JTextField();
-    jButton2 = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,13 +96,6 @@ public class updateProvider extends javax.swing.JDialog {
 
     txtKategori.setEditable(false);
 
-    jButton2.setText("PROSES");
-    jButton2.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton2ActionPerformed(evt);
-      }
-    });
-
     javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
     jPanel2.setLayout(jPanel2Layout);
     jPanel2Layout.setHorizontalGroup(
@@ -116,11 +111,8 @@ public class updateProvider extends javax.swing.JDialog {
               .addComponent(jLabel3))
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(txtNama, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-              .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+              .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+              .addComponent(txtKategori, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))))
         .addContainerGap())
     );
     jPanel2Layout.setVerticalGroup(
@@ -130,9 +122,7 @@ public class updateProvider extends javax.swing.JDialog {
         .addComponent(jLabel1)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-            .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton2))
+          .addComponent(txtKategori, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
           .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -181,14 +171,9 @@ public class updateProvider extends javax.swing.JDialog {
     
   }//GEN-LAST:event_jButton1ActionPerformed
 
-  private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-    new listKategori(new inputProvider(view), this).setVisible(true);
-  }//GEN-LAST:event_jButton2ActionPerformed
-
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButton2;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;

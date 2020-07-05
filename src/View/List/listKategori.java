@@ -5,10 +5,10 @@
  */
 package View.List;
 
+import Config.Config;
 import Controller.List.Control_listKategori;
-import View.Dialog.Kategori.inputKategori;
 import View.Dialog.Provider.inputProvider;
-import View.Dialog.Provider.updateProvider;
+import View.Dialog.Transaksi.inputTransaksi;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -16,23 +16,27 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class listKategori extends javax.swing.JDialog {
+public class listKategori extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form listKategori
    */
   Control_listKategori c;
   inputProvider view;
-  updateProvider view2;
+  inputTransaksi view3;
   
-  public listKategori(inputProvider view, updateProvider view2){
+  public listKategori(inputProvider view, inputTransaksi view3){
     initComponents();
+    this.setTitle(listKategori);
+    this.setAlwaysOnTop(true);
     this.setLocationRelativeTo(view);
     this.view=view;
-    this.view2=view2;
+    this.view3=view3;
     c = new Control_listKategori(this);
     c.isiTable();
   }
+
+  
   
 
   public JTable getTabelListKategori() {
@@ -154,7 +158,8 @@ public class listKategori extends javax.swing.JDialog {
     
     view.getTxtKategori().setText((String) tabelListKategori.getValueAt(tabelListKategori.getSelectedRow(), 1));
     
-    view2.getTxtKategori().setText((String) tabelListKategori.getValueAt(tabelListKategori.getSelectedRow(), 1));
+    view3.getTxtKategori().setText((String) tabelListKategori.getValueAt(tabelListKategori.getSelectedRow(), 1));
+    
     this.dispose();
   }//GEN-LAST:event_tabelListKategoriMouseClicked
 

@@ -178,6 +178,9 @@
                   <Dimension value="[75, 25]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+              </Events>
             </Component>
             <Container class="javax.swing.JSplitPane" name="jSplitPane1">
               <Properties>

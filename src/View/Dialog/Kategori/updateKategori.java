@@ -5,8 +5,8 @@
  */
 package View.Dialog.Kategori;
 
+import Config.Config;
 import Controller.Kategori.Control_kategoriUpdate;
-import Controller.Provider.Control_providerUpdate;
 import View.Panel.kategoriPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author MohamadEsa
  */
-public class updateKategori extends javax.swing.JDialog {
+public class updateKategori extends javax.swing.JDialog implements Config{
 
   /**
    * Creates new form MenuMaster
@@ -27,6 +27,8 @@ public class updateKategori extends javax.swing.JDialog {
   public updateKategori(kategoriPanel view) {
     initComponents();
     this.setLocationRelativeTo(view);
+    this.setTitle(updateKategori);
+//    this.setAlwaysOnTop(true);
     c = new Control_kategoriUpdate(this);
     this.view=view;
     txtID.setVisible(false);

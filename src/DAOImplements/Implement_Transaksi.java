@@ -12,8 +12,11 @@ import DAO.DAO_Transaksi;
 import DAO.DAO_User;
 import Model.Kategori;
 import Model.Produk;
+import Model.Provider;
 import Model.Transaksi;
 import Model.User;
+import View.Dialog.Transaksi.inputTransaksi;
+import View.List.listProviderTransaksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -105,6 +108,85 @@ public class Implement_Transaksi implements DAO_Transaksi{
         m.setPembayaran(res.getString("tipe_pembayaran"));
         m.setTgl_bayar(res.getString("tanggal_bayar"));
         m.setSn_id(res.getString("kode_sn"));
+        
+        li.add(m);
+      }
+      
+    } catch (SQLException e) {
+      JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
+      System.err.println("[100] Pesan Error:\n"+e);
+    } finally{
+      try {
+        con.close();
+        sta.close();
+        res.close();
+      } catch (SQLException e) {
+      }
+    }
+    return li;
+  }
+  
+  
+  @Override
+  public List<Provider> getSearchFromKategori(String kateg) {
+    con = DBUtilities.config();
+    Statement sta = null;
+    ResultSet res = null;
+    List<Provider> li = null;
+//    System.out.println("Nyebrang :"+kateg);
+    try {
+      String q = "SELECT * FROM `provider` WHERE kategori LIKE '%"+kateg+"%'";
+      
+      li = new ArrayList<>();
+      sta = con.createStatement();
+      res = sta.executeQuery(q);
+      
+      while(res.next()){
+        Provider m = new Provider();
+        m.setId(res.getString("id_provider"));
+        m.setKategori(res.getString("kategori"));
+        m.setNama_provider(res.getString("nama_provider"));
+        
+        li.add(m);
+      }
+      
+    } catch (SQLException e) {
+      JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
+      System.err.println("[100] Pesan Error:\n"+e);
+    } finally{
+      try {
+        con.close();
+        sta.close();
+        res.close();
+      } catch (SQLException e) {
+      }
+    }
+    return li;
+  }
+  
+  
+  @Override
+  public List<Produk> getSearchFromProvider(String data, String data1) {
+    con = DBUtilities.config();
+    Statement sta = null;
+    ResultSet res = null;
+    List<Produk> li = null;
+    
+    try {
+      String q = "SELECT * FROM `produk` WHERE provider LIKE '%"+data+"%' AND kategori LIKE '%"+data1+"%'";
+      
+      li = new ArrayList<>();
+      sta = con.createStatement();
+      res = sta.executeQuery(q);
+      
+      while(res.next()){
+        Produk m = new Produk();
+        m.setId(res.getString("id_produk"));
+        m.setKategori(res.getString("kategori"));
+        m.setProvider(res.getString("provider"));
+        m.setNama_produk(res.getString("nama_produk"));
+        m.setKeterangan(res.getString("keterangan"));
+        m.setHarga(res.getString("harga"));
         
         li.add(m);
       }

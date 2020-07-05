@@ -9,6 +9,8 @@ import Model.Kategori;
 import Model.Produk;
 import Model.Provider;
 import Model.Transaksi;
+import View.Dialog.Transaksi.inputTransaksi;
+import View.List.listProviderTransaksi;
 import java.util.List;
 
 /**
@@ -18,8 +20,8 @@ import java.util.List;
 public interface DAO_Transaksi {
   public List<Transaksi> getALL();
   public List<Transaksi> getSearch(String data);
-//  public List<Provider> getSearchProduk(String data);
-//  public List<Kategori> getSearchKategori(String data);
+  public List<Produk> getSearchFromProvider(String data, String data1);
+  public List<Provider> getSearchFromKategori(String kateg);
   
   public void add(Transaksi data);
   public void edit(Transaksi data);

@@ -212,7 +212,11 @@ public class providerPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    c.search(this);
+    if(txtCari.getText().trim().isEmpty()){
+      JOptionPane.showMessageDialog(null, "Pencarian Belum Ditentukan","Perhatian",JOptionPane.WARNING_MESSAGE);
+    } else{
+      c.search(this);
+    }
   }//GEN-LAST:event_jButton4ActionPerformed
 
   private void tabelDataProviderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataProviderMouseClicked

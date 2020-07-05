@@ -48,6 +48,7 @@ public class Implement_Produk implements DAO_Produk{
       while(res.next()){
         Produk m = new Produk();
         m.setId(res.getString("id_produk"));
+        m.setKategori(res.getString("kategori"));
         m.setProvider(res.getString("provider"));
         m.setNama_produk(res.getString("nama_produk"));
         m.setKeterangan(res.getString("keterangan"));
@@ -87,6 +88,7 @@ public class Implement_Produk implements DAO_Produk{
       while(res.next()){
         Produk m = new Produk();
         m.setId(res.getString("id_produk"));
+        m.setKategori(res.getString("kategori"));
         m.setProvider(res.getString("provider"));
         m.setNama_produk(res.getString("nama_produk"));
         m.setKeterangan(res.getString("keterangan"));
@@ -113,7 +115,8 @@ public class Implement_Produk implements DAO_Produk{
   public void add(Produk data) {
     con = DBUtilities.config();
     
-    String  provider = data.getProvider(),
+    String  kategori = data.getKategori(),
+            provider = data.getProvider(),
             nama = data.getNama_produk(),
             keterangan = data.getKeterangan(),
             harga = data.getHarga();
@@ -122,13 +125,14 @@ public class Implement_Produk implements DAO_Produk{
     PreparedStatement stat = null;
     
     try {
-      String q = "INSERT INTO `produk`(`id_produk`, `provider`, `nama_produk`, `keterangan`, `harga`) VALUES (null, ?, ?, ?, ?)";
+      String q = "INSERT INTO `produk`(`id_produk`, `kategori`, `provider`, `nama_produk`, `keterangan`, `harga`) VALUES (null,?,?,?,?,?)";
       
       stat = con.prepareStatement(q);
-      stat.setString(1, provider);
-      stat.setString(2, nama);
-      stat.setString(3, keterangan);
-      stat.setString(4, harga);
+      stat.setString(1, kategori);
+      stat.setString(2, provider);
+      stat.setString(3, nama);
+      stat.setString(4, keterangan);
+      stat.setString(5, harga);
       stat.executeUpdate();
       
     } catch (SQLException e) {
@@ -148,7 +152,8 @@ public class Implement_Produk implements DAO_Produk{
     con = DBUtilities.config();
     
     String id = data.getId();
-    String  provider = data.getProvider(),
+    String  kategori = data.getKategori(),
+            provider = data.getProvider(),
             nama = data.getNama_produk(),
             keterangan = data.getKeterangan(),
             harga = data.getHarga();
@@ -157,9 +162,10 @@ public class Implement_Produk implements DAO_Produk{
     PreparedStatement stat = null;
     
     try {
-      String q = "UPDATE `produk` SET `provider`=?,`nama_produk`=?,`keterangan`=?,`harga`=? WHERE `id_produk`=?";
+      String q = "UPDATE `produk` SET `kategori`=?,`provider`=?,`nama_produk`=?,`keterangan`=?,`harga`=? WHERE `id_produk`=?";
       stat = con.prepareStatement(q);
-      stat.setString(1, provider);
+      stat.setString(1, kategori);
+      stat.setString(2, provider);
       stat.setString(2, nama);
       stat.setString(3, keterangan);
       stat.setString(4, harga);
