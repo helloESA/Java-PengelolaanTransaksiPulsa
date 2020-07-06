@@ -16,8 +16,8 @@ import java.util.List;
  * @author MohamadEsa
  */
 public interface DAO_Count {
-  public List<Transaksi> getCountSukses();
-  public List<Transaksi> getCountGagal();
-  public List<Transaksi> getCountBelumBayar();
-  public List<Transaksi> getCountJumlahTransaksi();
+  public String getCountSukses();
+  public String getCountGagal();
+  public String getCountBelumBayar();
+  public int getCountJumlahTransaksi();
 }

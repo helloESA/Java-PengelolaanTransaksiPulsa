@@ -5,6 +5,10 @@
  */
 package View.Panel;
 
+import Controller.Count.Control_beranda;
+import View.Form.Dashboard;
+import javax.swing.JLabel;
+
 /**
  *
  * @author MohamadEsa
@@ -14,9 +18,35 @@ public class berandaPanel extends javax.swing.JPanel {
   /**
    * Creates new form berandaPanel
    */
+  Control_beranda c;
   public berandaPanel() {
     initComponents();
+    c = new Control_beranda(this);
+    refresh();
   }
+
+  public JLabel getLabelBelum() {
+    return labelBelum;
+  }
+
+  public JLabel getLabelGagal() {
+    return labelGagal;
+  }
+
+  public JLabel getLabelJumlah() {
+    return labelJumlah;
+  }
+
+  public JLabel getLabelSukses() {
+    return labelSukses;
+  }
+  
+  public void refresh(){
+    c.hitungJumlah();
+    c.hitungSukses();
+    c.hitungBelum();
+  }
+  
 
   /**
    * This method is called from within the constructor to initialize the form.
@@ -28,31 +58,28 @@ public class berandaPanel extends javax.swing.JPanel {
   private void initComponents() {
 
     jPanel1 = new javax.swing.JPanel();
-    jPanel2 = new javax.swing.JPanel();
     jPanel3 = new javax.swing.JPanel();
     jPanel4 = new javax.swing.JPanel();
     jLabel2 = new javax.swing.JLabel();
     jLabel3 = new javax.swing.JLabel();
-    jLabel4 = new javax.swing.JLabel();
+    labelSukses = new javax.swing.JLabel();
     jPanel5 = new javax.swing.JPanel();
     jLabel5 = new javax.swing.JLabel();
     jLabel6 = new javax.swing.JLabel();
-    jLabel7 = new javax.swing.JLabel();
+    labelGagal = new javax.swing.JLabel();
     jPanel6 = new javax.swing.JPanel();
     jLabel8 = new javax.swing.JLabel();
     jLabel9 = new javax.swing.JLabel();
-    jLabel10 = new javax.swing.JLabel();
+    labelBelum = new javax.swing.JLabel();
     jPanel8 = new javax.swing.JPanel();
     jLabel14 = new javax.swing.JLabel();
     jLabel15 = new javax.swing.JLabel();
-    jLabel16 = new javax.swing.JLabel();
+    labelJumlah = new javax.swing.JLabel();
+    jButton1 = new javax.swing.JButton();
 
     setBackground(new java.awt.Color(99, 170, 227));
 
     jPanel1.setBackground(new java.awt.Color(229, 241, 251));
-
-    jPanel2.setBackground(new java.awt.Color(229, 241, 251));
-    jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
     jPanel3.setBackground(new java.awt.Color(229, 241, 251));
     jPanel3.setLayout(new java.awt.GridLayout(2, 1, 20, 20));
@@ -63,11 +90,11 @@ public class berandaPanel extends javax.swing.JPanel {
 
     jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel3.setText("Transaksi Sukses");
+    jLabel3.setText("Telah Dibayar");
 
-    jLabel4.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-    jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel4.setText("00000000");
+    labelSukses.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+    labelSukses.setForeground(new java.awt.Color(255, 255, 255));
+    labelSukses.setText("00000000");
 
     javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
     jPanel4.setLayout(jPanel4Layout);
@@ -79,7 +106,7 @@ public class berandaPanel extends javax.swing.JPanel {
         .addGap(18, 18, 18)
         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel3)
-          .addComponent(jLabel4))
+          .addComponent(labelSukses))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel4Layout.setVerticalGroup(
@@ -90,7 +117,7 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel4Layout.createSequentialGroup()
             .addComponent(jLabel3)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+            .addComponent(labelSukses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
           .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
@@ -105,9 +132,9 @@ public class berandaPanel extends javax.swing.JPanel {
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
     jLabel6.setText("Transaksi Gagal");
 
-    jLabel7.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-    jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel7.setText("00000000");
+    labelGagal.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+    labelGagal.setForeground(new java.awt.Color(255, 255, 255));
+    labelGagal.setText("00000000");
 
     javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
     jPanel5.setLayout(jPanel5Layout);
@@ -119,7 +146,7 @@ public class berandaPanel extends javax.swing.JPanel {
         .addGap(18, 18, 18)
         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel6)
-          .addComponent(jLabel7))
+          .addComponent(labelGagal))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel5Layout.setVerticalGroup(
@@ -130,7 +157,7 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel5Layout.createSequentialGroup()
             .addComponent(jLabel6)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+            .addComponent(labelGagal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
           .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
@@ -145,9 +172,9 @@ public class berandaPanel extends javax.swing.JPanel {
     jLabel9.setForeground(new java.awt.Color(255, 255, 255));
     jLabel9.setText("Belum Membayar");
 
-    jLabel10.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-    jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel10.setText("00000000");
+    labelBelum.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+    labelBelum.setForeground(new java.awt.Color(255, 255, 255));
+    labelBelum.setText("00000000");
 
     javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
     jPanel6.setLayout(jPanel6Layout);
@@ -159,7 +186,7 @@ public class berandaPanel extends javax.swing.JPanel {
         .addGap(18, 18, 18)
         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel9)
-          .addComponent(jLabel10))
+          .addComponent(labelBelum))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel6Layout.setVerticalGroup(
@@ -170,7 +197,7 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel6Layout.createSequentialGroup()
             .addComponent(jLabel9)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+            .addComponent(labelBelum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
           .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
@@ -185,9 +212,9 @@ public class berandaPanel extends javax.swing.JPanel {
     jLabel15.setForeground(new java.awt.Color(255, 255, 255));
     jLabel15.setText("Jumlah Transaksi");
 
-    jLabel16.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-    jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel16.setText("00000000");
+    labelJumlah.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+    labelJumlah.setForeground(new java.awt.Color(255, 255, 255));
+    labelJumlah.setText("00000000");
 
     javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
     jPanel8.setLayout(jPanel8Layout);
@@ -199,7 +226,7 @@ public class berandaPanel extends javax.swing.JPanel {
         .addGap(18, 18, 18)
         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addComponent(jLabel15)
-          .addComponent(jLabel16))
+          .addComponent(labelJumlah))
         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
     jPanel8Layout.setVerticalGroup(
@@ -210,30 +237,39 @@ public class berandaPanel extends javax.swing.JPanel {
           .addGroup(jPanel8Layout.createSequentialGroup()
             .addComponent(jLabel15)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+            .addComponent(labelJumlah, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
           .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addContainerGap())
     );
 
     jPanel3.add(jPanel8);
 
-    jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 950, 300));
+    jButton1.setText("REFRESH");
+    jButton1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1ActionPerformed(evt);
+      }
+    });
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
     jPanel1.setLayout(jPanel1Layout);
     jPanel1Layout.setHorizontalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE)
-        .addContainerGap())
+        .addGap(0, 14, Short.MAX_VALUE)
+        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+          .addComponent(jButton1)
+          .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE))
+        .addGap(0, 10, Short.MAX_VALUE))
     );
     jPanel1Layout.setVerticalGroup(
       jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-        .addContainerGap()
-        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
-        .addGap(35, 35, 35))
+      .addGroup(jPanel1Layout.createSequentialGroup()
+        .addGap(0, 100, Short.MAX_VALUE)
+        .addComponent(jButton1)
+        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addGap(0, 118, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -254,26 +290,30 @@ public class berandaPanel extends javax.swing.JPanel {
     );
   }// </editor-fold>//GEN-END:initComponents
 
+  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    refresh();
+  }//GEN-LAST:event_jButton1ActionPerformed
+
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JLabel jLabel10;
+  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel14;
   private javax.swing.JLabel jLabel15;
-  private javax.swing.JLabel jLabel16;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;
-  private javax.swing.JLabel jLabel4;
   private javax.swing.JLabel jLabel5;
   private javax.swing.JLabel jLabel6;
-  private javax.swing.JLabel jLabel7;
   private javax.swing.JLabel jLabel8;
   private javax.swing.JLabel jLabel9;
   private javax.swing.JPanel jPanel1;
-  private javax.swing.JPanel jPanel2;
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel4;
   private javax.swing.JPanel jPanel5;
   private javax.swing.JPanel jPanel6;
   private javax.swing.JPanel jPanel8;
+  private javax.swing.JLabel labelBelum;
+  private javax.swing.JLabel labelGagal;
+  private javax.swing.JLabel labelJumlah;
+  private javax.swing.JLabel labelSukses;
   // End of variables declaration//GEN-END:variables
 }

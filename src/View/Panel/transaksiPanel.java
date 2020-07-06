@@ -5,9 +5,11 @@
  */
 package View.Panel;
 
+import Controller.Count.Control_beranda;
 import Controller.Provider.Control_transaksiList;
 import View.Dialog.Transaksi.inputTransaksi;
 import View.Dialog.Transaksi.updateTransaksi;
+import View.Form.Dashboard;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -24,11 +26,14 @@ public class transaksiPanel extends javax.swing.JPanel {
    */
   
   Control_transaksiList c;
+  Dashboard view;
+  berandaPanel count;
   public updateTransaksi ubah = null;
   public detailtransaksiPanel detail = null;
   
-  public transaksiPanel() {
+  public transaksiPanel(berandaPanel count) {
     initComponents();
+    this.count=count;
     c = new Control_transaksiList(this);
     refresh();
     detail = new detailtransaksiPanel(this);
@@ -70,6 +75,7 @@ public class transaksiPanel extends javax.swing.JPanel {
     txtCari = new javax.swing.JTextField();
     jButton4 = new javax.swing.JButton();
     jSplitPane1 = new javax.swing.JSplitPane();
+    jScrollPane2 = new javax.swing.JScrollPane();
     panelDetail = new javax.swing.JPanel();
     jScrollPane1 = new javax.swing.JScrollPane();
     tabelDataTransaksi = new javax.swing.JTable();
@@ -137,7 +143,9 @@ public class transaksiPanel extends javax.swing.JPanel {
     jSplitPane1.setDividerSize(3);
 
     panelDetail.setLayout(new java.awt.CardLayout());
-    jSplitPane1.setRightComponent(panelDetail);
+    jScrollPane2.setViewportView(panelDetail);
+
+    jSplitPane1.setRightComponent(jScrollPane2);
 
     jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 402));
     jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +201,7 @@ public class transaksiPanel extends javax.swing.JPanel {
             .addComponent(jButton4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(txtCari, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+        .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE)
         .addContainerGap())
     );
 
@@ -250,6 +258,7 @@ public class transaksiPanel extends javax.swing.JPanel {
                 String id = tabelDataTransaksi.getValueAt(tabelDataTransaksi.getSelectedRow(), 0).toString();
                 c.delete(id);
                 refresh();
+                count.refresh();
             }
         } else{
             JOptionPane.showMessageDialog(this, "Pilih Data yang akan Dihapus","Peringatan",JOptionPane.WARNING_MESSAGE);
@@ -263,6 +272,7 @@ public class transaksiPanel extends javax.swing.JPanel {
   private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
     new inputTransaksi(this).setVisible(true);
     refresh();
+    count.refresh();
   }//GEN-LAST:event_btnAddActionPerformed
 
   private void tabelDataTransaksiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataTransaksiMouseClicked
@@ -336,6 +346,7 @@ public class transaksiPanel extends javax.swing.JPanel {
   private javax.swing.JPanel jPanel3;
   private javax.swing.JPanel jPanel5;
   private javax.swing.JScrollPane jScrollPane1;
+  private javax.swing.JScrollPane jScrollPane2;
   private javax.swing.JSplitPane jSplitPane1;
   private javax.swing.JPanel panelDetail;
   private javax.swing.JTable tabelDataTransaksi;

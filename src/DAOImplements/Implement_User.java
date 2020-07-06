@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  */
 public class Implement_User implements DAO_User{
 
-  Connection con;
+  Connection con = DBUtilities.config();
   
   public Implement_User(){}
   
@@ -35,7 +35,6 @@ public class Implement_User implements DAO_User{
     List<User> li = null;
     
     try {
-      con = DBUtilities.config();
       String q = "SELECT * FROM `user` ORDER BY id_user DESC";
       
       li = new ArrayList<>();
@@ -72,7 +71,6 @@ public class Implement_User implements DAO_User{
     List<User> li = null;
     User m = null;
     try {
-      con = DBUtilities.config();
       String q = "SELECT * FROM `user` WHERE username='"+username+"' AND password = MD5('"+password+"')";
       
       li = new ArrayList<>();
@@ -104,7 +102,7 @@ public class Implement_User implements DAO_User{
 
   @Override
   public List<User> getSearch(String data) {
-    con = DBUtilities.config();
+    
     Statement sta = null;
     ResultSet res = null;
     List<User> li = null;
@@ -125,17 +123,10 @@ public class Implement_User implements DAO_User{
         
         li.add(m);
       }
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
     }
     return li;
   }
@@ -158,21 +149,15 @@ public class Implement_User implements DAO_User{
       stat.setString(2, uname);
       stat.setString(3, pass);
       stat.executeUpdate();
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[200] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        stat.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
   }
 
   @Override
   public void edit(User data) {
-    con = DBUtilities.config();
+    
     
     String id = data.getId();
     String nama = data.getNama();
@@ -190,16 +175,10 @@ public class Implement_User implements DAO_User{
       stat.setString(3, pass);
       stat.setString(4, id);
       stat.executeUpdate();
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[300] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        stat.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
   }
 
   @Override
@@ -211,9 +190,9 @@ public class Implement_User implements DAO_User{
       String q = "DELETE FROM user WHERE id_user='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[400] Pesan Error:\n"+e);
     }
   }
-  
 }

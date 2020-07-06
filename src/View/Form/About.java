@@ -18,6 +18,7 @@ public class About extends javax.swing.JFrame implements Config{
    */
   public About() {
     initComponents();
+    this.setTitle("Tentang - "+project_name);
     this.setLocationRelativeTo(this);
     this.setAlwaysOnTop(true);
     jLabel2.setText(project_name+" - "+versi);
@@ -41,12 +42,11 @@ public class About extends javax.swing.JFrame implements Config{
     jLabel5 = new javax.swing.JLabel();
     jLabel6 = new javax.swing.JLabel();
     jLabel7 = new javax.swing.JLabel();
-    jButton1 = new javax.swing.JButton();
     jLabel8 = new javax.swing.JLabel();
 
-    setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     setAlwaysOnTop(true);
-    setUndecorated(true);
+    setType(java.awt.Window.Type.UTILITY);
 
     jPanel1.setBackground(new java.awt.Color(99, 170, 227));
 
@@ -74,13 +74,6 @@ public class About extends javax.swing.JFrame implements Config{
     jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel7.setText("MOHAMAD ESA RESMAYA - 2020");
 
-    jButton1.setText("TUTUP");
-    jButton1.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1ActionPerformed(evt);
-      }
-    });
-
     jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     jLabel8.setText("Untuk Tugas OOP2 STTBandung");
 
@@ -90,9 +83,7 @@ public class About extends javax.swing.JFrame implements Config{
       jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(jPanel7Layout.createSequentialGroup()
         .addGap(10, 10, 10)
-        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-          .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-          .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         .addGap(10, 10, 10))
       .addGroup(jPanel7Layout.createSequentialGroup()
         .addGap(10, 10, 10)
@@ -134,9 +125,7 @@ public class About extends javax.swing.JFrame implements Config{
         .addComponent(jLabel7)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
         .addComponent(jLabel8)
-        .addGap(23, 23, 23)
-        .addComponent(jButton1)
-        .addContainerGap(13, Short.MAX_VALUE))
+        .addContainerGap(29, Short.MAX_VALUE))
     );
 
     javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,10 +158,6 @@ public class About extends javax.swing.JFrame implements Config{
 
     pack();
   }// </editor-fold>//GEN-END:initComponents
-
-  private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    dispose();
-  }//GEN-LAST:event_jButton1ActionPerformed
 
   /**
    * @param args the command line arguments
@@ -210,7 +195,6 @@ public class About extends javax.swing.JFrame implements Config{
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
-  private javax.swing.JButton jButton1;
   private javax.swing.JLabel jLabel1;
   private javax.swing.JLabel jLabel2;
   private javax.swing.JLabel jLabel3;

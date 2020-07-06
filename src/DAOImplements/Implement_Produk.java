@@ -56,18 +56,11 @@ public class Implement_Produk implements DAO_Produk{
         
         li.add(m);
       }
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Ditampilkan","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
     return li;
   }
 
@@ -96,18 +89,11 @@ public class Implement_Produk implements DAO_Produk{
         
         li.add(m);
       }
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        sta.close();
-        res.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
     return li;
   }
 
@@ -134,17 +120,11 @@ public class Implement_Produk implements DAO_Produk{
       stat.setString(4, keterangan);
       stat.setString(5, harga);
       stat.executeUpdate();
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[200] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        stat.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
   }
 
   @Override
@@ -171,19 +151,12 @@ public class Implement_Produk implements DAO_Produk{
       stat.setString(4, harga);
       stat.setString(5, id);
       
-      
       stat.executeUpdate();
-      
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);
       System.err.println("[300] Pesan Error:\n"+e);
-    } finally{
-      try {
-        con.close();
-        stat.close();
-      } catch (SQLException e) {
-      }
-    }
+    } 
   }
 
   @Override
@@ -195,10 +168,10 @@ public class Implement_Produk implements DAO_Produk{
       String q = "DELETE FROM produk WHERE id_produk='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
+      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[400] Pesan Error:\n"+e);
     }
   }
-  
 }

@@ -17,8 +17,12 @@ public class manajementransaksi {
    * @param args the command line arguments
    */
   public static void main(String[] args) {
-    SplashScreen form1 = new SplashScreen();
-    form1.setVisible(true);
+    
+    java.awt.EventQueue.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        new SplashScreen().setVisible(true);
+      }
+    });
   }
-  
-}
+  }

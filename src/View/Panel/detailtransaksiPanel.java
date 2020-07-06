@@ -6,6 +6,9 @@
 
 package View.Panel;
 
+import View.Dialog.cetakStruk;
+import javax.swing.JButton;
+
 /**
  *
  * @author MohamadEsa
@@ -15,14 +18,22 @@ public class detailtransaksiPanel extends javax.swing.JPanel {
     /** Creates new form detailtransaksiPanel */
   public String id, kategori, provider, produk, keterangan, no_pel, harga, wkt_pesan, status, pembayaran, tgl_bayar, sn_id;
   transaksiPanel view;
+  public cetakStruk view2;
   
     public detailtransaksiPanel(transaksiPanel view) {
         initComponents();
         this.view=view;
     }
+
+  public JButton getjButton1() {
+    return jButton1;
+  }
+    
+    
     
     public void dipilih(){
       view.detail = this;
+      jButton1.setEnabled(true);
       txtID.setText("Detail Transaksi #"+id);
       txtKategori.setText(kategori);
       txtProvider.setText(provider);
@@ -81,7 +92,8 @@ public class detailtransaksiPanel extends javax.swing.JPanel {
 
     txtID.setText("Detail Transaksi");
 
-    jButton1.setText("CETAK STRUK");
+    jButton1.setText("PRATINJAU STRUK");
+    jButton1.setEnabled(false);
     jButton1.addActionListener(new java.awt.event.ActionListener() {
       public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton1ActionPerformed(evt);
@@ -96,6 +108,8 @@ public class detailtransaksiPanel extends javax.swing.JPanel {
     jScrollPane1.setViewportView(txtKeterangan);
 
     jLabel4.setText("Harga");
+
+    txtHarga.setEnabled(false);
 
     jLabel5.setText("Kategori");
 
@@ -256,7 +270,24 @@ public class detailtransaksiPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    // TODO add your handling code here:
+    
+    view2 = new cetakStruk();
+    view2.getTxtStruk().append
+                        ("-------------------------------------\n\n"
+                       + "\tINFORMASI TRANSAKSI\n\n"
+                       + "No. Trx\t: "+id+"\n"
+                       + "Waktu\t: "+wkt_pesan+"\n"
+                       + "====================================\n"
+                       + "Nama Produk\t: "+produk+"\n"
+                       + "Detail\t\t: "+keterangan+"\n"
+                       + "No. Tujuan\t: "+no_pel+"\n"
+                       + "Harga\t\t: "+txtHarga.getText()+"\n"
+                       + "No. SN/ID\t: "+sn_id+"\n"
+                       + "=====================================\n"
+                       + "TERIMA KASIH TELAH BERTRANSAKSI"
+                       + "\n\n"
+                       + "--------------------------------------");
+    view2.setVisible(true);
   }//GEN-LAST:event_jButton1ActionPerformed
 
 
