@@ -9,3 +9,8 @@ Versi 1.0.1
 - menambahkan modul 'produk', 'provider' dan 'kategori'
 - menambahkan list 'kategori' dan 'provider'
 
+Update 7 Juli 2020
+Versi 1.1.6
+- menambahkan modul 'transaksi'
+- menambahkan modul 'laporan(belum berdasarkan parameter)'
+- perbaiki bug pada login
