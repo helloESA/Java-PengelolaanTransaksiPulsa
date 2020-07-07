@@ -49,7 +49,24 @@ public class Implement_Count implements DAO_Count{
 
   @Override
   public String getCountGagal() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    koneksi = DBUtilities.config();
+    PreparedStatement stat = null;
+    ResultSet res = null;
+    String size = null;
+    try {
+      String query = "SELECT SUM(harga) harga FROM transaksi";
+      
+      stat = koneksi.prepareStatement(query);
+      res = stat.executeQuery();
+      if(res.next()){
+        size = res.getString("harga");
+      }
+//      koneksi.close();
+//      System.out.println("--> "+size);
+    } catch (Exception e) {
+      JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dimunculkan","Perhatian", JOptionPane.WARNING_MESSAGE);
+    } 
+    return size;
   }
 
   @Override

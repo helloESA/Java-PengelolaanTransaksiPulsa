@@ -160,7 +160,7 @@
             <Container class="javax.swing.JPanel" name="jPanel5">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="45" green="35" red="dc" type="rgb"/>
+                  <Color blue="b8" green="a2" red="17" type="rgb"/>
                 </Property>
               </Properties>
 
@@ -212,7 +212,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Transaksi Gagal"/>
+                    <Property name="text" type="java.lang.String" value="Total Transaksi"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelGagal">
@@ -354,7 +354,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Jumlah Transaksi"/>
+                    <Property name="text" type="java.lang.String" value="Banyak Transaksi"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelJumlah">

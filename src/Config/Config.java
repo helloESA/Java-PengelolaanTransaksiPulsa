@@ -16,7 +16,7 @@ public interface Config {
     String link = "jdbc:mysql://localhost:3306/mpt_pulsa";
     String db_name = "mpt_pulsa";
     
-    String versi = "1.0.1";
+    String versi = "1.1.6";
     String project_name = "Pengelolaan Transaksi Pulsa";
     
     String inputProduk = "Input Produk";

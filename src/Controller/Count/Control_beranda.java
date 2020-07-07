@@ -33,4 +33,8 @@ public class Control_beranda {
   public void hitungBelum(){
     view.getLabelBelum().setText("Rp "+String.valueOf(impl.getCountBelumBayar()));
   }
+  
+  public void hitungTotal(){
+    view.getLabelGagal().setText("Rp "+String.valueOf(impl.getCountGagal()));
+  }
 }

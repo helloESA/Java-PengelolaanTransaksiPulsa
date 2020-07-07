@@ -45,6 +45,7 @@ public class berandaPanel extends javax.swing.JPanel {
     c.hitungJumlah();
     c.hitungSukses();
     c.hitungBelum();
+    c.hitungTotal();
   }
   
 
@@ -124,13 +125,13 @@ public class berandaPanel extends javax.swing.JPanel {
 
     jPanel3.add(jPanel4);
 
-    jPanel5.setBackground(new java.awt.Color(220, 53, 69));
+    jPanel5.setBackground(new java.awt.Color(23, 162, 184));
 
     jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/wallet.png"))); // NOI18N
 
     jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel6.setText("Transaksi Gagal");
+    jLabel6.setText("Total Transaksi");
 
     labelGagal.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
     labelGagal.setForeground(new java.awt.Color(255, 255, 255));
@@ -210,7 +211,7 @@ public class berandaPanel extends javax.swing.JPanel {
 
     jLabel15.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
     jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-    jLabel15.setText("Jumlah Transaksi");
+    jLabel15.setText("Banyak Transaksi");
 
     labelJumlah.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
     labelJumlah.setForeground(new java.awt.Color(255, 255, 255));
