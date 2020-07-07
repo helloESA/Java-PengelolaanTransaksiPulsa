@@ -25,7 +25,6 @@ public class LoginFrame extends javax.swing.JFrame {
     initComponents();
     this.setLocationRelativeTo(null);
     this.setTitle(project_name+" - Login");
-    this.setAlwaysOnTop(true);
     this.setResizable(false);
     txtUname.requestFocus();
     control = new Control_userLogin(this);

@@ -65,7 +65,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
         m.setSn_id(res.getString("kode_sn"));
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Ditampilkan","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -104,7 +104,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -135,7 +135,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -169,7 +169,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -212,7 +212,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
       stat.setString(10, tgl_bayar);
       stat.setString(11, sn_id);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[200] Pesan Error:\n"+e);
@@ -257,7 +257,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
       
       
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);
       System.err.println("[300] Pesan Error:\n"+e);
@@ -273,7 +273,7 @@ public class Implement_Transaksi implements DAO_Transaksi{
       String q = "DELETE FROM transaksi WHERE id_transaksi='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[400] Pesan Error:\n"+e);

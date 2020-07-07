@@ -6,6 +6,7 @@
 package View.Panel;
 
 import Controller.Laporan.Control_laporan;
+import View.Dialog.listProduktoExport;
 
 /**
  *
@@ -76,7 +77,7 @@ public class laporanPanel extends javax.swing.JPanel {
 
     jButton3.setBackground(new java.awt.Color(255, 193, 7));
     jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/csv.png"))); // NOI18N
-    jButton3.setText("EKSPOR KE CSV");
+    jButton3.setText("EKSPOR DAFTAR HARGA");
     jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton3.setPreferredSize(new java.awt.Dimension(150, 150));
     jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -114,7 +115,7 @@ public class laporanPanel extends javax.swing.JPanel {
             .addContainerGap()
             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE))
           .addGroup(jPanel8Layout.createSequentialGroup()
-            .addGap(95, 95, 95)
+            .addGap(97, 97, 97)
             .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)))
         .addContainerGap(48, Short.MAX_VALUE))
     );
@@ -124,8 +125,8 @@ public class laporanPanel extends javax.swing.JPanel {
         .addContainerGap()
         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(27, Short.MAX_VALUE))
+        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+        .addContainerGap(164, Short.MAX_VALUE))
     );
 
     jPanel7.add(jPanel8);
@@ -182,7 +183,7 @@ public class laporanPanel extends javax.swing.JPanel {
   }// </editor-fold>//GEN-END:initComponents
 
   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    
+    new listProduktoExport().setVisible(true);
   }//GEN-LAST:event_jButton3ActionPerformed
 
   private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed

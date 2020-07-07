@@ -232,8 +232,8 @@ public class produkPanel extends javax.swing.JPanel {
     ubah.kategori = tabelDataProduk.getValueAt(tableData, 1).toString();
     ubah.provider = tabelDataProduk.getValueAt(tableData, 2).toString();
     ubah.nama = tabelDataProduk.getValueAt(tableData, 3).toString();
-    ubah.keterangan = tabelDataProduk.getValueAt(tableData, 5).toString();
-    ubah.harga = tabelDataProduk.getValueAt(tableData, 6).toString();
+    ubah.keterangan = tabelDataProduk.getValueAt(tableData, 4).toString();
+    ubah.harga = tabelDataProduk.getValueAt(tableData, 5).toString();
     ubah.dipilih();
     
     btnAdd.setEnabled(false);

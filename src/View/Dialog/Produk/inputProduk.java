@@ -33,6 +33,7 @@ public class inputProduk extends javax.swing.JDialog implements Config{
     this.view=view;
     jLabel1.setVisible(false);
     c = new Control_produkAdd(this);
+    
   }
 
   public JTextField getTxtKategori() {
@@ -103,6 +104,12 @@ public class inputProduk extends javax.swing.JDialog implements Config{
     });
 
     jLabel3.setText("Keterangan");
+
+    txtNama.addKeyListener(new java.awt.event.KeyAdapter() {
+      public void keyReleased(java.awt.event.KeyEvent evt) {
+        txtNamaKeyReleased(evt);
+      }
+    });
 
     txtKeterangan.setColumns(20);
     txtKeterangan.setRows(5);
@@ -243,6 +250,12 @@ public class inputProduk extends javax.swing.JDialog implements Config{
   private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     new listKategoriProduk(this).setVisible(true);
   }//GEN-LAST:event_jButton3ActionPerformed
+
+  private void txtNamaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNamaKeyReleased
+    int pos = txtNama.getCaretPosition();
+    txtNama.setText(txtNama.getText().toUpperCase());
+    txtNama.setCaretPosition(pos);
+  }//GEN-LAST:event_txtNamaKeyReleased
 
 
   // Variables declaration - do not modify//GEN-BEGIN:variables

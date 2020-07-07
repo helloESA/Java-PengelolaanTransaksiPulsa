@@ -50,7 +50,7 @@ public class Implement_Kategori implements DAO_Kategori{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Ditampilkan","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -79,7 +79,7 @@ public class Implement_Kategori implements DAO_Kategori{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -101,7 +101,7 @@ public class Implement_Kategori implements DAO_Kategori{
       stat = con.prepareStatement(q);
       stat.setString(1, nama);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[200] Pesan Error:\n"+e);
@@ -124,7 +124,7 @@ public class Implement_Kategori implements DAO_Kategori{
       stat.setString(1, nama);
       stat.setString(2, id);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);
       System.err.println("[300] Pesan Error:\n"+e);
@@ -140,7 +140,7 @@ public class Implement_Kategori implements DAO_Kategori{
       String q = "DELETE FROM kategori WHERE id_kategori='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      
       System.err.println("[400] Pesan Error:\n"+e);

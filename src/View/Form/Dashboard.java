@@ -98,7 +98,7 @@ public class Dashboard extends javax.swing.JFrame implements Config{
 
 
     public void prepare(){
-        txtUsername.setText("PTP - "+versi);
+        txtUsername.setText(UserSession.getNama());
         tampilkanJam();
         panelBody.add(panel1, "user");
         panelBody.add(panel2, "beranda");

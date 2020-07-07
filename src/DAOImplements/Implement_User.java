@@ -57,7 +57,7 @@ public class Implement_User implements DAO_User{
       }
      
         
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Ditampilkan","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -92,7 +92,7 @@ public class Implement_User implements DAO_User{
       }
       
       System.out.println(UserSession.getNama());
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[101]\nLogin Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[101] Pesan Error:\n"+e);
@@ -123,7 +123,7 @@ public class Implement_User implements DAO_User{
         
         li.add(m);
       }
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[100]\nTabel Gagal Diproses","Pesan Error",JOptionPane.ERROR_MESSAGE);
       System.err.println("[100] Pesan Error:\n"+e);
@@ -149,7 +149,7 @@ public class Implement_User implements DAO_User{
       stat.setString(2, uname);
       stat.setString(3, pass);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[200]\nData Gagal Disimpan","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[200] Pesan Error:\n"+e);
     } 
@@ -175,7 +175,7 @@ public class Implement_User implements DAO_User{
       stat.setString(3, pass);
       stat.setString(4, id);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[300]\nData Gagal Diperbarui","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[300] Pesan Error:\n"+e);
     } 
@@ -190,7 +190,7 @@ public class Implement_User implements DAO_User{
       String q = "DELETE FROM user WHERE id_user='"+data+"'";
       stat = con.prepareStatement(q);
       stat.executeUpdate();
-      con.close();
+//      con.close();
     } catch (SQLException e) {
       JOptionPane.showMessageDialog(null, "[400]\nData Gagal Dihapus","Pesan Error", JOptionPane.ERROR_MESSAGE);      System.err.println("[400] Pesan Error:\n"+e);
     }

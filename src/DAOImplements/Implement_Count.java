@@ -39,7 +39,7 @@ public class Implement_Count implements DAO_Count{
       if(res.next()){
         size = res.getString("harga");
       }
-      koneksi.close();
+//      koneksi.close();
 //      System.out.println("--> "+size);
     } catch (Exception e) {
       JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dimunculkan","Perhatian", JOptionPane.WARNING_MESSAGE);
@@ -66,7 +66,7 @@ public class Implement_Count implements DAO_Count{
       if(res.next()){
         size = res.getString("harga");
       }
-      koneksi.close();
+//      koneksi.close();
 //      System.out.println("--> "+size);
     } catch (Exception e) {
       JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dimunculkan","Perhatian", JOptionPane.WARNING_MESSAGE);
@@ -88,7 +88,7 @@ public class Implement_Count implements DAO_Count{
       if(res.next()){
         size = res.getInt(1);  
       }
-      koneksi.close();
+//      koneksi.close();
 //      System.out.println("-> "+size);
     } catch (Exception e) {
       JOptionPane.showMessageDialog(null, "Data Tidak Dapat Dimunculkan","Perhatian", JOptionPane.WARNING_MESSAGE);
